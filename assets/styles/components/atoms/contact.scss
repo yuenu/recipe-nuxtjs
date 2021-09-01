@@ -1,0 +1,64 @@
+.contact {
+  width:100%;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:10px;
+  min-height:200px;
+  margin:50px 0;
+
+  &__title {
+    margin-bottom:20px;
+  }
+
+  form {
+    display:flex;
+    position:relative;
+    margin: 16px 0;
+
+    .icon {
+      position:absolute;
+      top:8px;
+      left:210px;
+      cursor: pointer;
+
+      &:hover svg {
+        fill:aqua;
+      }
+    }
+  }
+
+  input {
+    height:40px;
+    width:250px;
+    border-radius:50px;
+    padding:0 40px 0 20px;
+  }
+
+
+  &__card:nth-child(2) &__content {
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+  }
+
+  &__social {
+    display:flex;
+    gap:10px;
+  }
+
+  &__info, 
+  &__info a {
+    display:flex;
+    gap: 20px;
+  }
+
+  &__card:nth-child(3) &__content {
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+
+  &__ingredient {
+    width:130px;
+  }
+}

@@ -1,0 +1,26 @@
+.hero {
+  width: 100%;
+  height: 650px;
+  position: relative;
+  background:linear-gradient(to left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url(./assets/images/hero.webp) no-repeat left center/cover;
+  
+  &__content {
+    max-width:420px;
+    position:absolute;
+    top:30%;
+    left:10%;
+    background-color:transparent;
+  }
+
+  &__heading {
+    font-size: 46px;
+    color: $color-white;
+    margin-bottom:20px;
+  }
+
+  &__secondary {
+    font-size:26px;
+    color: $color-white;
+    margin-bottom:24px;
+  }
+}

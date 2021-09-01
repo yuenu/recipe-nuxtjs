@@ -1,0 +1,58 @@
+.sidebar {
+  width:100%;
+  max-width:400px;
+  display:flex;
+  flex-direction: column;
+  gap:16px;
+
+  &__box {
+    position:relative;
+    width:100%;
+    max-width:350px;
+    height:80px;
+    background-color:#eee;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    padding:0 10px;
+    gap: 30px;
+    cursor:pointer;
+    transition:250ms;
+    border-radius:5px;
+    user-select: none;
+
+    &:hover {
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
+    }
+  }
+
+  &__box:hover &__name {
+    color:$color-secondary;
+  }
+
+  &__box:hover &__pic-left svg {
+    fill:$color-secondary;
+  }
+
+  &__pic-left{
+    margin-left:20px;
+    svg{
+      width:40px;
+      height:40px;
+    }
+  }
+  &__name{
+    font-size:20px;
+    
+  }
+  &__pic-right{
+    max-width:130px;
+    position:absolute;
+    right:-20px;
+  }
+}
