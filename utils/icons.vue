@@ -9,7 +9,7 @@ import { Vue, Component, Ref, Prop, Watch } from 'nuxt-property-decorator'
   mounted() {
     this.iconType = this.type ? this.type + '/' : ''
     try {
-      this.iconName = require(`~/assets/icons/${this.iconType}${this.name}.svg`)
+      this.iconName = require(`~/assets/icons/${this.iconType}${this.name}.svg?raw`)
       this.isGetResource = true
     } catch (_e) {
       this.isGetResource = false
