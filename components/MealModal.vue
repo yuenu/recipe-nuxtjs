@@ -1,5 +1,5 @@
 <template>
-  <section class="modal">
+  <section class="modal" @click.self="close">
     <div v-for="meal in mealDetail" :key="meal.idMeal" class="modal__container">
       <div class="modal__close" @click="close">
         <Icon :name="'x-circle'" />
@@ -18,7 +18,10 @@
       </div>
       <div class="modal__info">
         <h2 class="modal__info-heading">Instruction</h2>
-        <div class="modal__info-content">{{}}</div>
+        <div
+          class="modal__info-content"
+          v-html="meal.strInstructions.replace(/\r?\n/g, '<br />')"
+        ></div>
       </div>
     </div>
   </section>
@@ -29,7 +32,7 @@ import { Component, Prop, Vue, Watch } from 'nuxt-property-decorator'
 import Icon from '@/utils/icons.vue'
 import { Meal } from '@/types/index'
 
-type MealDetail = {
+type CustomMeal = {
   mealId: string
   mealName: string
   mealArea: string
@@ -52,7 +55,7 @@ export default class MealModal extends Vue {
     return this.mealData
   }
 
-  data: MealDetail = {
+  handleData: CustomMeal = {
     mealId: '',
     mealName: '',
     mealArea: '',
@@ -64,22 +67,26 @@ export default class MealModal extends Vue {
   }
 
   @Watch('mealData', { immediate: true, deep: true })
-  handleMealData(val: Meal[], _oldVal: Meal[]) {
-    console.log('new:', val)
-    const mealInfo = val[0]
-    this.data.mealId = mealInfo.idMeal
-    this.data.mealName = mealInfo.strMeal
-    this.data.mealArea = mealInfo.strArea
-    this.data.mealCategory = mealInfo.strCategory
-    this.data.mealImgUrl = mealInfo.strMealThumb
-    this.data.mealInstructions = mealInfo.strInstructions
-    // for (let i = 1; i <= 20; i++) {
-    //   if (mealInfo['strIngredient' + i]) {
-    //     this.data.mealIngredients.push(
-    //       `${mealInfo['strIngredient' + i]} -> ${mealInfo['strMeasure' + i]}`
-    //     )
-    //   }
-    // }
+  handleMealData(val: Meal[], oldVal: Meal[]) {
+    if (val && oldVal !== undefined) {
+      const mealInfo = val[0]
+      this.handleData.mealId = mealInfo.idMeal
+      this.handleData.mealName = mealInfo.strMeal
+      this.handleData.mealArea = mealInfo.strArea
+      this.handleData.mealCategory = mealInfo.strCategory
+      this.handleData.mealImgUrl = mealInfo.strMealThumb
+      this.handleData.mealInstructions = mealInfo.strInstructions
+      for (let i = 1; i <= 20; i++) {
+        if (mealInfo[('strIngredient' + i.toString()) as keyof Meal]) {
+          this.handleData.mealIngredients.push(
+            `${mealInfo[('strIngredient' + i.toString()) as keyof Meal]} -> ${
+              mealInfo[('strMeasure' + i.toString()) as keyof Meal]
+            }`
+          )
+        }
+      }
+    }
+    console.log('handleData', this.handleData)
   }
 
   close() {
