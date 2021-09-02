@@ -27,9 +27,9 @@ export default class Icons extends Vue {
   iconName = ''
   isGetResource = false
 
-  @Watch('color')
-  handleColor(_val: string, _oldVal: string) {
-    if (this.isGetResource && this.iconEl && this.color) {
+  @Watch('color', { immediate: true, deep: true })
+  handleColor(val: string, _oldVal: string) {
+    if (this.isGetResource && val) {
       const svgEl = this.iconEl.children[0] as HTMLOrSVGImageElement
       svgEl.style.fill = this.color
     }

@@ -14,11 +14,13 @@
     padding: 50px 20px;
     max-width: 500px;
     min-width: 300px;
-    min-height: 500px;
+    height: 90vh;
     background-color: #eee;
     position: relative;
-    top: 10vh;
-    overflow:auto;
+    top: 5vh;
+    overflow: auto;
+    border-radius:10px;
+
   }
 
   &__close {
@@ -30,11 +32,60 @@
 
   &__title {
     font-size: 24px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
   }
 
   &__pic img {
     object-fit: cover;
-    height: 400px;
+    height: 320px;
+    width:100%;
+    border-radius: 5px;
+  }
+
+  &__tag {
+    display: flex;
+    padding: 10px 0;
+    gap: 12px;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+  }
+
+  &__text {
+    background-color: #892b64;
+    color: #e9a37e;
+    padding: 3px 5px;
+    border-radius: 5px;
+  }
+
+  &__tag div:last-of-type &__text {
+    background-color: #264653;
+    color: #eeeeee;
+  }
+
+  &__info {
+    &-heading {
+      font-size: 24px;
+      background-color: lightsalmon;
+      display: inline-block;
+      padding: 0 10px;
+      border-radius: 5px;
+      margin: 10px 0;
+      text-transform: uppercase;
+    }
+
+    &-instructions,
+    &-ingredient {
+      padding: 0 10px;
+      line-height:1.7;
+    }
+
+    &-ingredient {
+      list-style-type:disc;
+    }
+    
   }
 }

@@ -1,6 +1,10 @@
 <template>
   <main class="main">
-    <Modal v-if="isModalOpen" :meal-data="getMealDetail" @close="onModalClose" />
+    <Modal
+      v-if="isModalOpen"
+      :meal-data="getMealDetail"
+      @close="onModalClose"
+    />
     <div class="main__container">
       <Header />
       <div class="meal__wrapper">
@@ -75,7 +79,7 @@ export default class MealsPage extends Vue {
   get getMealDetail() {
     return this.storeModule.mealDetail
   }
-  
+
   async setup() {
     await this.storeModule.getAllCategories()
   }
@@ -88,10 +92,12 @@ export default class MealsPage extends Vue {
   onMealDetail(mealId: string) {
     this.storeModule.getMealById(mealId)
     this.isModalOpen = true
+    document.body.style.overflow = 'hidden'
   }
 
   onModalClose() {
     this.isModalOpen = false
+    document.body.style.overflow = 'auto'
   }
 
   // nuxt fetch function test

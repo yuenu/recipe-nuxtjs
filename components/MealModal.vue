@@ -1,6 +1,10 @@
 <template>
   <section class="modal" @click.self="close">
-    <div v-for="meal in mealDetail" :key="meal.idMeal" class="modal__container">
+    <div
+      v-for="meal in [handleData]"
+      :key="meal.idMeal"
+      class="modal__container"
+    >
       <div class="modal__close" @click="close">
         <Icon :name="'x-circle'" />
       </div>
@@ -11,17 +15,32 @@
         <img :src="meal.strMealThumb" :alt="meal.strMeal" />
       </div>
       <div class="modal__tag">
-        <div class="modal__label">Area:</div>
-        <div class="modal__text">{{ meal.strArea }}</div>
-        <div class="modal__label">Category:</div>
-        <div class="modal__text">{{ meal.strCategory }}</div>
+        <div>
+          <div class="modal__label">Area:</div>
+          <div class="modal__text">{{ meal.strArea }}</div>
+        </div>
+        <div>
+          <div class="modal__label">Category:</div>
+          <div class="modal__text">{{ meal.strCategory }}</div>
+        </div>
       </div>
       <div class="modal__info">
         <h2 class="modal__info-heading">Instruction</h2>
         <div
-          class="modal__info-content"
+          class="modal__info-instructions"
           v-html="meal.strInstructions.replace(/\r?\n/g, '<br />')"
         ></div>
+      </div>
+
+      <div class="modal__info">
+        <h2 class="modal__info-heading">Ingredients</h2>
+        <li
+          v-for="ingrendient in meal.strIngredients"
+          :key="ingrendient"
+          class="modal__info-ingredient"
+        >
+          {{ ingrendient }}
+        </li>
       </div>
     </div>
   </section>
@@ -31,17 +50,6 @@
 import { Component, Prop, Vue, Watch } from 'nuxt-property-decorator'
 import Icon from '@/utils/icons.vue'
 import { Meal } from '@/types/index'
-
-type CustomMeal = {
-  mealId: string
-  mealName: string
-  mealArea: string
-  mealCategory: string
-  mealImgUrl: string
-  mealYoutubeLink: string
-  mealInstructions: string
-  mealIngredients: string[]
-}
 
 @Component<MealModal>({
   components: {
@@ -55,30 +63,34 @@ export default class MealModal extends Vue {
     return this.mealData
   }
 
-  handleData: CustomMeal = {
-    mealId: '',
-    mealName: '',
-    mealArea: '',
-    mealCategory: '',
-    mealImgUrl: '',
-    mealYoutubeLink: '',
-    mealInstructions: '',
-    mealIngredients: [],
+  handleData = {
+    idMeal: '',
+    strMeal: '',
+    strArea: '',
+    strCategory: '',
+    strMealThumb: '',
+    strYoutube: '',
+    strInstructions: '',
+    strIngredients: [] as string[],
   }
+
+  // https://github.com/microsoft/TypeScript/issues/35859
+  // TODO: Write typesciprt more abstract
 
   @Watch('mealData', { immediate: true, deep: true })
   handleMealData(val: Meal[], oldVal: Meal[]) {
     if (val && oldVal !== undefined) {
       const mealInfo = val[0]
-      this.handleData.mealId = mealInfo.idMeal
-      this.handleData.mealName = mealInfo.strMeal
-      this.handleData.mealArea = mealInfo.strArea
-      this.handleData.mealCategory = mealInfo.strCategory
-      this.handleData.mealImgUrl = mealInfo.strMealThumb
-      this.handleData.mealInstructions = mealInfo.strInstructions
+      this.handleData.idMeal = mealInfo.idMeal
+      this.handleData.strMeal = mealInfo.strMeal
+      this.handleData.strArea = mealInfo.strArea
+      this.handleData.strCategory = mealInfo.strCategory
+      this.handleData.strMealThumb = mealInfo.strMealThumb
+      this.handleData.strInstructions = mealInfo.strInstructions
+      this.handleData.strYoutube = mealInfo.strYoutube
       for (let i = 1; i <= 20; i++) {
         if (mealInfo[('strIngredient' + i.toString()) as keyof Meal]) {
-          this.handleData.mealIngredients.push(
+          this.handleData.strIngredients.push(
             `${mealInfo[('strIngredient' + i.toString()) as keyof Meal]} -> ${
               mealInfo[('strMeasure' + i.toString()) as keyof Meal]
             }`
@@ -86,7 +98,6 @@ export default class MealModal extends Vue {
         }
       }
     }
-    console.log('handleData', this.handleData)
   }
 
   close() {
