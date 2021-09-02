@@ -1,0 +1,39 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  z-index: 50;
+
+  &__container {
+    padding: 50px 20px;
+    max-width: 500px;
+    min-width: 300px;
+    min-height: 500px;
+    background-color: #eee;
+    position: relative;
+    top: 10vh;
+  }
+
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+  }
+
+  &__title {
+    font-size: 24px;
+    margin-bottom:20px;
+  }
+
+  &__pic img {
+    object-fit: cover;
+    height: 400px;
+  }
+}

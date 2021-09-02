@@ -14,7 +14,8 @@ module.exports = {
   // add your custom rules here
   rules: {
     'no-undef': 'off',
-    indent: ['error', 2],
+    'indent': 'off',
+    '@typescript-eslint/indent': ['error', 2],
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
     'vue/no-v-html': 'off',
