@@ -1,7 +1,6 @@
 <template>
   <main class="main">
     <div class="main__container">
-      <img :src="getIcons.phone" alt="">
       <Hero />
       <Intro />
       <Feature />
@@ -12,8 +11,6 @@
 </template>
 
 <script lang="ts">
-// import axios from 'axios'
-
 import { Component, Vue, getModule } from 'nuxt-property-decorator'
 import Hero from '@/components/Home/Hero.vue'
 import Intro from '@/components/Home/Introduction.vue'
@@ -36,8 +33,6 @@ import App from '@/store/app'
   },
   mounted() {
     this.setup()
-    console.log(customIcons.phone)
-
   },
   beforeDestroy() {
     this.$store.unregisterModule('myApp')
@@ -60,18 +55,4 @@ export default class IndexPage extends Vue {
     await this.storeModule.getAllCategories()
   }
 }
-//   setup() {
-//     const categories = ref([])
-
-//     // TODO: Handle error event
-//     const { fetch } = useFetch(async () => {
-//       const { data } = await axios.get(
-//         'https://www.themealdb.com/api/json/v1/1/categories.php'
-//       )
-//       categories.value = data.categories
-//     })
-//     fetch()
-//     return { categories }
-//   },
-// })
 </script>

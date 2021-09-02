@@ -1,5 +1,10 @@
 import { Module, Action, Mutation, VuexModule } from 'vuex-module-decorators'
-import { fetchAllCategories } from '@/utils/api'
+import {
+  fetchAllCategories,
+  fetchMealsById,
+  fetchMealsByCategory,
+  fetchMealsByName,
+} from '@/utils/api'
 import { Categories, Meal } from '@/types'
 
 @Module({
@@ -10,40 +15,49 @@ import { Categories, Meal } from '@/types'
 export default class App extends VuexModule {
   meals: Meal[] = []
   categories: Categories[] = []
+  mealDetail: Meal[] = []
 
   @Mutation
-  STORE_MEALS(data: Categories[]) {
+  STORE_CATEGORIES(data: Categories[]) {
     this.categories = data
+  }
+
+  @Mutation
+  STORE_MEAL_DETAIL(data: Meal[]) {
+    this.mealDetail = data
+  }
+
+  @Mutation
+  STORE_MEALS(data: Meal[]) {
+    this.meals = data
   }
 
   @Action
   async getAllCategories() {
     if (this.categories.length === 0) {
       const { categories } = await fetchAllCategories()
-      this.STORE_MEALS(categories)
+      this.STORE_CATEGORIES(categories)
     }
   }
-  // get getCounter() {
-  //   return this.counter
-  // }
 
-  // @Mutation
-  // INCREMENT_COUNTER() {
-  //   this.counter++
-  // }
+  @Action
+  async getFilterByCategory(category: string) {
+    const { meals } = await fetchMealsByCategory(category)
+    this.STORE_MEALS(meals)
+    console.log('category Meals:',meals)
+  }
 
-  // @Mutation
-  // DECR_COUNTER() {
-  //   this.counter--
-  // }
+  @Action
+  async getMealById(mealId: string) {
+    const { meals } = await fetchMealsById(mealId)
+    this.STORE_MEAL_DETAIL(meals)
+    console.log('fetch meal by Id:', meals)
+  }
 
-  // @Action
-  // increment() {
-  //   this.context.commit('INCREMENT_COUNTER')
-  // }
-
-  // @Action
-  // decr() {
-  //   this.context.commit('DECR_COUNTER')
-  // }
+  @Action
+  async getMealByName(searchName: string) {
+    const { meals } = await fetchMealsByName(searchName)
+    this.STORE_MEALS(meals)
+    console.log('fetch meal by name:', meals)
+  }
 }

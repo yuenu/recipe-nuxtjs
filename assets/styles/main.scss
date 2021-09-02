@@ -1,16 +1,21 @@
+// Base settings
 @import './abstracts/variables.scss';
-
 @import './base/typography.scss';
 @import './base/base.scss';
 @import './base/utilities.scss';
 
+// Layout 
 @import './components/organisms/header.scss';
 @import './components/organisms/footer.scss';
 
+// Home Page
 @import './components/atoms/hero.scss';
 @import './components/atoms/introduction.scss';
 @import './components/atoms/characteristics.scss';
 @import './components/atoms/feature.scss';
 @import './components/atoms/contact.scss';
-@import './components/atoms/meals-banner.scss';
-@import './components/meals/meals-sidebar.scss';
+
+// Meal Page
+@import './components/meals/banner.scss';
+@import './components/meals/sidebar.scss';
+@import './components/meals/list.scss';

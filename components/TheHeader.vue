@@ -26,15 +26,15 @@
       </div>
       <div class="header__bottom">
         <div class="header__lang">
-          <nuxt-link class="header__lang-cn" :to="switchLocalePath('cn')"
-            >簡</nuxt-link
-          >
-          <nuxt-link class="header__lang-tw" :to="switchLocalePath('tw')"
-            >繁</nuxt-link
-          >
-          <nuxt-link class="header__lang-en" :to="switchLocalePath('en')"
-            >EN</nuxt-link
-          >
+          <nuxt-link class="header__lang-cn" :to="switchLocalePath('cn')">
+            簡
+          </nuxt-link>
+          <nuxt-link class="header__lang-tw" :to="switchLocalePath('tw')">
+            繁
+          </nuxt-link>
+          <nuxt-link class="header__lang-en" :to="switchLocalePath('en')">
+            EN
+          </nuxt-link>
         </div>
         <nav ref="navEl" class="header__nav">
           <ul class="header__nav-list">

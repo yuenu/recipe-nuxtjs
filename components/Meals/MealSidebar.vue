@@ -4,6 +4,7 @@
       v-for="category in getCategories"
       :key="category.id"
       class="sidebar__box"
+      @click="$emit('getCategoryMeals', category.strCategory)"
     >
       <div class="sidebar__pic-left">
         <Icon
