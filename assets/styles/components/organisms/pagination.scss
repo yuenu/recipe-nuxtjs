@@ -1,0 +1,29 @@
+.pagination {
+  margin: 20px 0 20px 40px;
+  display: inline-block;
+
+  &__link {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    margin: 0 4px 0 0;
+    border: 1px solid #ddd;
+    cursor: pointer;
+
+    &:hover,
+    &.current {
+      background: #ffc139;
+      color: #000;
+    }
+
+    &.current {
+      color: $color-white;
+    }
+
+    &.disabled {
+      pointer-events: none;
+      background: $color-white;
+      color: #ddd;
+    }
+  }
+}

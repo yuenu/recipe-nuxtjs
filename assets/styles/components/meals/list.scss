@@ -7,6 +7,15 @@
     width: 100%;
     min-height: 500px;
 
+    &-el {
+      border: 1px solid #eee;
+      height: 1200px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      height: auto;
+    }
+
     &-container {
       width: 100%;
       display: flex;
@@ -25,27 +34,26 @@
     overflow: hidden;
     cursor: pointer;
 
-    &:hover &-pic{
+    &:hover &-pic {
       opacity: 0.3;
-      
     }
 
     &-content {
-      padding:10px 20px;
+      padding: 10px 20px;
     }
 
     &-title {
-      transition:250ms;
+      transition: 250ms;
     }
 
     &:hover &-title {
-      transform:translateY(-50px);
+      transform: translateY(-50px);
     }
 
     &-name {
-      font-size:18px;
+      font-size: 18px;
       color: #d57d1f;
-      overflow:hidden;
+      overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
@@ -53,40 +61,39 @@
     &:hover &-name {
       color: #ed2c49;
       white-space: normal;
-      transform:translateY(10%);
+      transform: translateY(10%);
     }
 
     &-buttons {
-      display:flex;
+      display: flex;
       justify-content: space-around;
-      position:absolute;
-      bottom:-40px;
-      transition:250ms;
-      transition-delay:100ms;
-      width:80%;
+      position: absolute;
+      bottom: -40px;
+      transition: 250ms;
+      transition-delay: 100ms;
+      width: 80%;
     }
 
     &:hover &-buttons {
-      bottom:5%;
+      bottom: 5%;
     }
 
     &-detail {
-      border:none;
-      width:150px;
-      height:34px;
-      background-color:$color-secondary;
-      color:#ffffff;
-      font-weight:bold;
-      font-size:14px;
-      border-radius:50px;
-      transition:250ms;
-      cursor:pointer;
+      border: none;
+      width: 150px;
+      height: 34px;
+      background-color: $color-secondary;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 50px;
+      transition: 250ms;
+      cursor: pointer;
     }
 
     &-collect {
       position: relative;
-      top:5px;
+      top: 5px;
     }
   }
-
 }

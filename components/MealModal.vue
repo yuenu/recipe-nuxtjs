@@ -35,8 +35,8 @@
       <div class="modal__info">
         <h2 class="modal__info-heading">Ingredients</h2>
         <li
-          v-for="ingrendient in meal.strIngredients"
-          :key="ingrendient"
+          v-for="(ingrendient, index) in meal.strIngredients"
+          :key="index"
           class="modal__info-ingredient"
         >
           {{ ingrendient }}
