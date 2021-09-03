@@ -68,10 +68,10 @@ export default class MealsList extends Vue {
     })
   }
 
-  @Watch('meals', {immediate: true, deep: true})
-  watchIfchangeSearch(val: CategoryMeals[], _oldVal: CategoryMeals[] ) {
+  @Watch('meals', { immediate: true, deep: true })
+  watchIfchangeSearch(val: CategoryMeals[], _oldVal: CategoryMeals[]) {
     // init the current page
-    if(val) this.currentPage = 1
+    if (val) this.currentPage = 1
   }
 }
 </script>

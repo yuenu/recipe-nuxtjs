@@ -39,7 +39,7 @@ import App from '@/store/app'
   },
 })
 export default class IndexPage extends Vue {
-  get getIcons () {
+  get getIcons() {
     return customIcons
   }
 

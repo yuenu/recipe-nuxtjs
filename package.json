@@ -9,7 +9,8 @@
     "generate": "nuxt generate",
     "lint:ts": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
     "prepare": "husky install",
-    "lint": "yarn lint:ts"
+    "lint": "yarn lint:ts",
+    "format": "prettier --fix --write ./**/*.{vue,ts}"
   },
   "lint-staged": {
     "*.{ts,vue}": "eslint"

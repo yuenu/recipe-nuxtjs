@@ -44,7 +44,7 @@ export default class App extends VuexModule {
   async getFilterByCategory(category: string) {
     const { meals } = await fetchMealsByCategory(category)
     this.STORE_MEALS(meals)
-    console.log('category Meals:',meals)
+    console.log('category Meals:', meals)
   }
 
   @Action
