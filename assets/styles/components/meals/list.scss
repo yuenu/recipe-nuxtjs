@@ -89,6 +89,10 @@
       border-radius: 50px;
       transition: 250ms;
       cursor: pointer;
+
+      &:hover {
+        background-color: rgba($color-secondary, 0.8);
+      }
     }
 
     &-collect {

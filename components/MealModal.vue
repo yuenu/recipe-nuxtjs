@@ -75,7 +75,7 @@ export default class MealModal extends Vue {
   }
 
   // https://github.com/microsoft/TypeScript/issues/35859
-  // TODO: Write typesciprt more abstract
+  // TODO: Use abstruct method in typescript
 
   @Watch('mealData', { immediate: true, deep: true })
   handleMealData(val: Meal[], oldVal: Meal[]) {

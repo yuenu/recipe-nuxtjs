@@ -22,15 +22,17 @@
 
     &-track {
       background: $clr-dark-700;
-      border-radius:10px;
     }
 
     &-thumb {
       background: $clr-gray-400;
-      border-radius:10px;
 
     }
   }
+}
+
+*:focus {
+  outline: none;
 }
 
 

@@ -1,7 +1,25 @@
 .characteristics {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
   gap: 20px;
+  grid-template-columns: 1fr 2fr 1fr;
+
+  @include respond(tab-land) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    &__center {
+      grid-area: 1 /1 / 2 /3;
+    }
+  }
+
+  @include respond(tab-port) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
+    &__center {
+      grid-area: 1 /1 / 2 /2;
+    }
+  }
 
   & > div {
     position: relative;
@@ -29,7 +47,7 @@
     }
 
     &-secondary {
-      font-size:20px;
+      font-size: 20px;
     }
   }
 

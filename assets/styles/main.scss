@@ -1,5 +1,7 @@
 // Base settings
 @import './abstracts/variables.scss';
+@import "./abstracts/mixins.scss";
+@import './abstracts/functions.scss';
 @import './base/typography.scss';
 @import './base/base.scss';
 @import './base/utilities.scss';

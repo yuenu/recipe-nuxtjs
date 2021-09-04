@@ -50,6 +50,16 @@ export default class Pagination extends Vue {
 
     if (this.pages > 1 && val !== 1) this.hasPrev = true
     else this.hasPrev = false
+
+    if(val === 1 && this.pages > 1) {
+      this.hasNext = true
+      this.hasPrev = false
+    }
+    console.log('onPagination', this.pages)
+    if(this.pages === 1) {
+      this.hasPrev = false
+      this.hasNext = false
+    }
   }
 }
 </script>
