@@ -1,7 +1,7 @@
 <template>
   <section class="product">
     <h1 class="product__heading">Product display</h1>
-    <div class="product__categories">
+    <div ref="swiperComponentRef" class="product__categories">
       <div
         v-for="category in getCategories"
         :key="category.idCategory"
@@ -42,8 +42,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'nuxt-property-decorator'
-// import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Component, Prop, Vue, Ref } from 'nuxt-property-decorator'
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
 import { Categories, Meal } from '@/types/index'
 
 import Icon from '@/utils/icons.vue'
@@ -51,13 +52,33 @@ import Icon from '@/utils/icons.vue'
 @Component<ProductDisplay>({
   components: {
     Icon,
-    // Swiper,
-    // SwiperSlide,
+    Swiper,
+    SwiperSlide
+  },
+  directives: {
+    swiper: directive,
+  },
+  mounted() {
+    console.log(this.swiperComponentRef)
   },
 })
 export default class ProductDisplay extends Vue {
+  @Ref() swiperComponentRef!: HTMLElement
+
   @Prop({ type: Array, required: true }) categories!: Categories[]
   @Prop({ type: Array, required: true }) meals!: Meal[]
+
+  swiperComponentOption  = {
+    loop: true,
+    slidesPerView: 3,
+    slidesPerGroup: 3,
+    spaceBetween: 10,
+    slideClass: 'product__categories',
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    }
+  }
 
   get getCategories() {
     return this.categories
@@ -66,6 +87,7 @@ export default class ProductDisplay extends Vue {
   get getMeals() {
     return this.meals
   }
+
 
   onSwiper(swiper: any) {
     console.log(swiper)

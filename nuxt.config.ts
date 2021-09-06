@@ -24,7 +24,9 @@ const config: NuxtConfig = {
   css: ['~/assets/styles/main.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    { src: '@/plugins/vue-awesome-swiper'}
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
