@@ -5,6 +5,11 @@
       <Intro />
       <Feature />
       <Characteristics />
+      <ProductDisplay
+        :categories="getCategories"
+        :meals="getMeals"
+        @getCategoryMeal="onCategoryMeals"
+      />
       <Contact :categories="getCategories" />
     </div>
   </main>
@@ -16,8 +21,9 @@ import Hero from '@/components/Home/Hero.vue'
 import Intro from '@/components/Home/Introduction.vue'
 import Characteristics from '@/components/Home/Characteristics.vue'
 import Feature from '@/components/Home/Feature.vue'
+import ProductDisplay from '@/components/Home/ProductDisplay.vue'
 import Contact from '@/components/Contact.vue'
-import customIcons from '~/utils/iconStore'
+import customIcons from '@/utils/iconStore'
 import App from '@/store/app'
 
 @Component<IndexPage>({
@@ -26,6 +32,7 @@ import App from '@/store/app'
     Intro,
     Characteristics,
     Feature,
+    ProductDisplay,
     Contact,
   },
   created() {
@@ -51,8 +58,16 @@ export default class IndexPage extends Vue {
     return this.storeModule.categories
   }
 
+  get getMeals() {
+    return this.storeModule.meals
+  }
+
   async setup() {
     await this.storeModule.getAllCategories()
+  }
+
+  onCategoryMeals(category: string) {
+    this.storeModule.getFilterByCategory(category)
   }
 }
 </script>
