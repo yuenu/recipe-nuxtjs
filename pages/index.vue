@@ -17,6 +17,7 @@
 
 <script lang="ts">
 import { Component, Vue, getModule } from 'nuxt-property-decorator'
+
 import Hero from '@/components/Home/Hero.vue'
 import Intro from '@/components/Home/Introduction.vue'
 import Characteristics from '@/components/Home/Characteristics.vue'
@@ -25,6 +26,7 @@ import ProductDisplay from '@/components/Home/ProductDisplay.vue'
 import Contact from '@/components/Contact.vue'
 import customIcons from '@/utils/iconStore'
 import App from '@/store/app'
+
 
 @Component<IndexPage>({
   components: {

@@ -4,6 +4,18 @@
   min-height:800px;
   gap:40px;
 
+  @include respond(tab-land) {
+    & {
+      flex-direction: column;
+      margin:50px 0;
+    }
+
+    &__content {
+      max-width:500px;
+      order:-1;
+    }
+  }
+
   &__pic {
     flex:1;
 

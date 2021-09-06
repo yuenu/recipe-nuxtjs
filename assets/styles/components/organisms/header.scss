@@ -3,6 +3,20 @@
   width: 100%;
   min-height: 100px;
 
+  @include respond(phone) {
+    &__lang,
+    &__social,
+    &__control {
+      display: none !important;
+    }
+
+    &__nav {
+      width: 100%;
+      display:flex;
+      justify-content: center;
+    }
+  }
+
   &__container {
     max-width: $deskop-size;
     margin: 0 auto;
@@ -14,66 +28,66 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position:relative;
+    position: relative;
   }
 
   &__brand {
-    position:absolute;
-    top:55%;
-    left:50%;
+    position: absolute;
+    top: 55%;
+    left: 50%;
     transform: translate(-50%, -50%);
   }
 
   &__phone {
-   &__link {
-     display:flex;
-     align-items: center;
-     gap:8px;
-   }
+    &__link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-   &-text {
-     font-size:20px;
-     margin-bottom:4px;
-   }
+    &-text {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
   }
 
   &__address {
-    display:flex;
-    gap:6px;
+    display: flex;
+    gap: 6px;
     align-items: center;
 
     &-text {
-      font-size:20px;
-      margin-bottom:4px;
+      font-size: 20px;
+      margin-bottom: 4px;
     }
   }
 
   // Header bottom
   &__bottom {
-    display:flex;
+    display: flex;
     align-items: center;
-    position:relative;
+    position: relative;
   }
 
   &__lang {
-    display:flex;
+    display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap:10px;
-    flex:1;
+    gap: 10px;
+    flex: 1;
 
     a {
-      display:flex;
+      display: flex;
       justify-content: center;
       align-items: center;
       outline: none;
       border: none;
-      width:38px;
-      height:38px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      cursor:pointer;
+      cursor: pointer;
       background-color: transparent;
-      font-weight:600;
+      font-weight: 600;
 
       &:hover {
         color: $color-white;
@@ -82,35 +96,36 @@
     }
   }
 
-  &__nav{
+  &__nav {
     &.sticky {
-      position:fixed;
-      top:20px;
-      width:100%;
-      height:40px;
-      display:flex;
+      position: fixed;
+      top: 20px;
+      width: 100%;
+      height: 40px;
+      display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow:3px 0px 10px rgba(0,0,0,0.6);
-      background-color:$color-white;
-      z-index:99;
+      box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.6);
+      background-color: $color-white;
+      z-index: 99;
+      border-bottom: 1px solid #eee;
     }
 
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     ul {
-      display:flex;
-      gap:16px;
-      
+      display: flex;
+      gap: 16px;
+
       a {
-        font-weight:600;
+        font-weight: 600;
         &.nuxt-link-active {
           color: $color-secondary;
         }
-  
+
         &:hover {
           color: $color-orange;
         }
@@ -119,8 +134,8 @@
   }
 
   &__social {
-    display:flex;
-    gap:12px;
+    display: flex;
+    gap: 12px;
     align-items: center;
 
     & .icon {
@@ -134,9 +149,9 @@
 
   &__control {
     display: flex;
-    gap:10px;
+    gap: 10px;
     align-items: center;
-    margin-left:50px;
+    margin-left: 50px;
 
     & .icon {
       cursor: pointer;
