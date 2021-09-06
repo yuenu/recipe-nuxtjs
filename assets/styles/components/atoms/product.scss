@@ -1,5 +1,5 @@
 .product {
-  padding: 50px 20px;
+  padding: 100px 20px;
 
   &__categories {
     display: flex;
@@ -31,18 +31,65 @@
 
   &__meals {
     padding: 20px 0;
-    display:flex;
-    gap:10px;
-    width:100%;
+    display: flex;
+    gap: 10px;
+    width: 100%;
   }
 
   &__card {
-    min-width: 200px;
-    padding:10px;
+    padding: 10px;
     height: auto;
+    border: 1px solid rgb(145, 145, 145);
+    height: 300px;
+    position:relative;
+    transition:150ms;
 
     img {
-      width:100%;
+      width: 100%;
+    }
+
+    &:hover {
+      box-shadow: 0 0 5px rgb(55, 55, 55);
     }
   }
+
+  &__card-content {
+    height: 100%;
+  }
+
+  &__card-detail {
+    border: none;
+    width: 80%;
+    height: 30px;
+    background-color: #ffc240;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 50px;
+    transition: 250ms;
+    cursor: pointer;
+    position: absolute;
+    bottom:10px;
+
+    &:hover {
+      background-color: #fab114;
+    }
+  }
+}
+
+.swiper-wrapper {
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  min-height: 300px !important;
+}
+
+.swiper-pagination {
+  bottom: -10px;
+}
+
+.swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
 }

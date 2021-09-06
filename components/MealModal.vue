@@ -14,6 +14,7 @@
       <div class="modal__pic">
         <img :src="meal.strMealThumb" :alt="meal.strMeal" />
       </div>
+      <a :href="meal.strYoutube">Youtube</a>
       <div class="modal__tag">
         <div>
           <div class="modal__label">Area:</div>

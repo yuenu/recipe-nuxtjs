@@ -8,11 +8,11 @@
   overflow: hidden;
   display: flex;
   justify-content: center;
-  z-index: 50;
+  z-index: 100;
 
   &__container {
     padding: 50px 20px;
-    max-width: 500px;
+    max-width: 40vw;
     min-width: 300px;
     height: 90vh;
     background-color: #ffffff;

@@ -17,8 +17,16 @@
       </div>
     </div>
 
-    <div class="product__meals">
-      <div v-for="meal in getMeals" :key="meal.idMeal" class="product__card">
+    <Swiper
+      ref="swiperComponentRef"
+      class="product__meals"
+      :options="swiperComponentOption"
+    >
+      <SwiperSlide
+        v-for="meal in getMeals"
+        :key="meal.idMeal"
+        class="product__card"
+      >
         <div class="product__card-pic">
           <img :src="meal.strMealThumb" :alt="meal.strMeal" />
         </div>
@@ -36,8 +44,9 @@
             Recipe
           </button>
         </div>
-      </div>
-    </div>
+      </SwiperSlide>
+      <div slot="pagination" class="swiper-pagination"></div>
+    </Swiper>
   </section>
 </template>
 
