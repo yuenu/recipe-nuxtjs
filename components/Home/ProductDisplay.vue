@@ -52,7 +52,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Ref } from 'nuxt-property-decorator'
-import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 import { Categories, Meal } from '@/types/index'
 
@@ -64,12 +64,6 @@ import Icon from '@/utils/icons.vue'
     Swiper,
     SwiperSlide
   },
-  directives: {
-    swiper: directive,
-  },
-  mounted() {
-    console.log(this.swiperComponentRef)
-  },
 })
 export default class ProductDisplay extends Vue {
   @Ref() swiperComponentRef!: HTMLElement
@@ -78,11 +72,9 @@ export default class ProductDisplay extends Vue {
   @Prop({ type: Array, required: true }) meals!: Meal[]
 
   swiperComponentOption  = {
-    loop: true,
-    slidesPerView: 3,
-    slidesPerGroup: 3,
+    slidesPerView: 4,
+    slidesPerGroup: 4,
     spaceBetween: 10,
-    slideClass: 'product__categories',
     pagination: {
       el: '.swiper-pagination',
       clickable: true
@@ -95,15 +87,6 @@ export default class ProductDisplay extends Vue {
 
   get getMeals() {
     return this.meals
-  }
-
-
-  onSwiper(swiper: any) {
-    console.log(swiper)
-  }
-
-  onSlideChange() {
-    console.log('slide change')
   }
 }
 </script>

@@ -68,8 +68,6 @@
     border-radius: 50px;
     transition: 250ms;
     cursor: pointer;
-    position: absolute;
-    bottom:10px;
 
     &:hover {
       background-color: #fab114;
@@ -82,7 +80,7 @@
 }
 
 .swiper-slide {
-  min-height: 300px !important;
+  aspect-ratio: 3 / 2;
 }
 
 .swiper-pagination {

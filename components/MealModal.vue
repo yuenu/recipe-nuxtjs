@@ -9,13 +9,23 @@
         <Icon :name="'x-circle'" />
       </div>
       <div class="modal__title">
-        {{ meal.strMeal }}
+        <Skeleton
+          v-skeleton="{ text: meal.strMeal }"
+          :height="20"
+          :width="200"
+        />
       </div>
       <div class="modal__pic">
-        <img :src="meal.strMealThumb" :alt="meal.strMeal" />
+        <Skeleton
+          v-skeleton="{ src: meal.strMealThumb, alt: meal.strMeal }"
+          :height="'100%'"
+          :width="'100%'"
+          :min-height="'35vh'"
+        />
       </div>
-      <a :href="meal.strYoutube">Youtube</a>
       <div class="modal__tag">
+        <a :href="meal.strYoutube" class="modal__youtube">Youtube</a>
+
         <div>
           <div class="modal__label">Area:</div>
           <div class="modal__text">{{ meal.strArea }}</div>
@@ -51,10 +61,12 @@
 import { Component, Prop, Vue, Watch } from 'nuxt-property-decorator'
 import Icon from '@/utils/icons.vue'
 import { Meal } from '@/types/index'
+import Skeleton from '@/components/Skeleton.vue'
 
 @Component<MealModal>({
   components: {
     Icon,
+    Skeleton,
   },
 })
 export default class MealModal extends Vue {

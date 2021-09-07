@@ -34,6 +34,11 @@
     overflow: hidden;
     cursor: pointer;
 
+    &-pic {
+      width: 100%;
+      height: auto;
+    }
+
     &:hover &-pic {
       opacity: 0.3;
     }
