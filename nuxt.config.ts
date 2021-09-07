@@ -1,4 +1,5 @@
 import type { NuxtConfig } from '@nuxt/types'
+import i18nConfig from './utils/i18nConfig'
 
 const config: NuxtConfig = {
   // Target: https://go.nuxtjs.dev/config-target
@@ -25,7 +26,8 @@ const config: NuxtConfig = {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '@/plugins/vue-awesome-swiper'}
+    { src: '@/plugins/vue-awesome-swiper' },
+    { src: '@/plugins/skeletonDirective', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -42,21 +44,7 @@ const config: NuxtConfig = {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    [
-      '@nuxtjs/i18n',
-      {
-        locales: [
-          { code: 'en', iso: 'en-US', file: 'en.js' },
-          { code: 'cn', iso: 'zh-CN', file: 'zh-cn.js' },
-          { code: 'tw', iso: 'zh-TW', file: 'zh-tw.js' },
-        ],
-        vueI18n: {
-          fallbackLocale: 'en',
-        },
-        langDir: '~/lang/',
-        defaultLocale: 'tw',
-      },
-    ],
+    ['@nuxtjs/i18n', i18nConfig],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

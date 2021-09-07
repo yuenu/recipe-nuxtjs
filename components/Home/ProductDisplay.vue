@@ -1,5 +1,5 @@
 <template>
-  <section class="product">
+  <section id="product" class="product">
     <h1 class="product__heading">Product display</h1>
     <div ref="swiperComponentRef" class="product__categories">
       <div
@@ -12,7 +12,7 @@
           <Icon :name="category.strCategory.toLowerCase()" :type="'category'" />
         </div>
         <div class="product__category-text">
-          {{ category.strCategory }}
+          {{ $t(`category.${category.strCategory.toLowerCase()}`) }}
         </div>
       </div>
     </div>
@@ -28,7 +28,12 @@
         class="product__card"
       >
         <div class="product__card-pic">
-          <img :src="meal.strMealThumb" :alt="meal.strMeal" />
+          <Skeleton 
+            v-skeleton="{ src: meal.strMealThumb, alt: meal.strMeal }"
+            :width="'100%'"
+            :height="'100%'"
+            :min-height="'30vh'"
+          />
         </div>
         <div class="product__card-content">
           <div class="product__card-title">
@@ -41,7 +46,7 @@
             class="product__card-detail"
             @click="$emit('getMealDetail', meal.idMeal)"
           >
-            Recipe
+            {{ $t('recipe') }}
           </button>
         </div>
       </SwiperSlide>
@@ -52,9 +57,10 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Ref } from 'nuxt-property-decorator'
-import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 import { Categories, Meal } from '@/types/index'
+import Skeleton from '@/components/Skeleton.vue'
 
 import Icon from '@/utils/icons.vue'
 
@@ -62,14 +68,9 @@ import Icon from '@/utils/icons.vue'
   components: {
     Icon,
     Swiper,
-    SwiperSlide
-  },
-  directives: {
-    swiper: directive,
-  },
-  mounted() {
-    console.log(this.swiperComponentRef)
-  },
+    SwiperSlide,
+    Skeleton
+  }
 })
 export default class ProductDisplay extends Vue {
   @Ref() swiperComponentRef!: HTMLElement
@@ -78,11 +79,9 @@ export default class ProductDisplay extends Vue {
   @Prop({ type: Array, required: true }) meals!: Meal[]
 
   swiperComponentOption  = {
-    loop: true,
-    slidesPerView: 3,
-    slidesPerGroup: 3,
-    spaceBetween: 10,
-    slideClass: 'product__categories',
+    slidesPerView: 4,
+    slidesPerGroup: 4,
+    spaceBetween: 50,
     pagination: {
       el: '.swiper-pagination',
       clickable: true
@@ -95,15 +94,6 @@ export default class ProductDisplay extends Vue {
 
   get getMeals() {
     return this.meals
-  }
-
-
-  onSwiper(swiper: any) {
-    console.log(swiper)
-  }
-
-  onSlideChange() {
-    console.log('slide change')
   }
 }
 </script>

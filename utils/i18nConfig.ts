@@ -12,7 +12,7 @@ const detectBrowserLanguage = {
   redirectOn: 'root', // recommended
 }
 
-const langDir = '~/lang/'
+const langDir = '@/lang/'
 
 const vueI18n = {
   fallbackLocale: 'en',
@@ -24,4 +24,5 @@ export default {
   detectBrowserLanguage,
   langDir,
   vueI18n,
+  lazy: true,
 }

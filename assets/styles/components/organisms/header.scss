@@ -6,7 +6,9 @@
   @include respond(phone) {
     &__lang,
     &__social,
-    &__control {
+    &__control,
+    &__address,
+    &__phone {
       display: none !important;
     }
 
@@ -14,6 +16,10 @@
       width: 100%;
       display:flex;
       justify-content: center;
+    }
+
+    &__bottom {
+      height:40px;
     }
   }
 
@@ -63,10 +69,32 @@
   }
 
   // Header bottom
+  &__wrapper {
+    width:100%;
+
+    &.sticky {
+      position: fixed;
+      top: 0px;
+      left:0;
+      width: 100%;
+      height: 5vh;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.6);
+      background-color: $color-white;
+      z-index: 99;
+      border-bottom: 1px solid #eee;
+    }
+  }
+
   &__bottom {
     display: flex;
     align-items: center;
     position: relative;
+    max-width:1330px;
+    margin: 0 auto;
+    height:100%;
   }
 
   &__lang {
@@ -97,19 +125,19 @@
   }
 
   &__nav {
-    &.sticky {
-      position: fixed;
-      top: 20px;
-      width: 100%;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.6);
-      background-color: $color-white;
-      z-index: 99;
-      border-bottom: 1px solid #eee;
-    }
+    // &.sticky {
+    //   position: fixed;
+    //   top: 20px;
+    //   width: 100%;
+    //   height: 40px;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    //   box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.6);
+    //   background-color: $color-white;
+    //   z-index: 99;
+    //   border-bottom: 1px solid #eee;
+    // }
 
     position: absolute;
     top: 50%;

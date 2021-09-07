@@ -19,11 +19,61 @@ export default {
       'secondary': '每天都有新食谱!',
     },
     'intro': {
-      'heading': '玛格丽塔披萨',
-      'description': '玛格丽特披萨（Margherita）是义大利的一种披萨饼，也是拿坡里披萨的代表。一般说法认为玛格丽特披萨这个名字是来自於义大利王妃玛格丽特。由於玛格丽特王妃认为这种披萨上「绿色的罗勒丶白色的莫萨里拉乾酪丶红色的番茄酱好比义大利国旗」，对这种披萨十分锺爱，因此用自己的名字命名了这款披萨[1]。发明玛格丽塔披萨的店家至今仍无定论，拿坡里的两家披萨店Pietro... e basta così（现改名为Pizzeria Brandi）和Pizzeria Antica Port\'Alba都自称是玛格丽塔披萨的发明者。',
+      'heading': '美味的佳肴',
+      'description': '在 COOKMEAL 上查找和分享日常烹饪灵感。 根据您喜欢的食物和您关注的朋友发现食谱丶厨师丶视频和操作方法。',
       'icon1': '快速',
       'icon2': '健康',
       'icon3': '点子'
     },
-  }
+  },
+  'feature': {
+    'heading1-1': '经典牛肉',
+    'heading1-2': '汉堡',
+    'description1': '试试这个美味的汉堡，里面有全麦面包的两个油炸部分丶一块多汁的牛肉丶奶酪和生菜',
+    'heading2': '最好的意大利面',
+    'description2': '我们的海鲜意大利面与一杯白葡萄酒完美融合',
+    'heading3': '时令汤',
+    'description3': '我们为您提供一道特色菜——我们的时令汤含有时令蔬菜'
+  },
+  'characteristics': {
+    'heading1-1': '超多样',
+    'heading1-2': '超过一千多种食谱',
+    'heading2-1': '美味的料理',
+    'heading2-2': '终身免费',
+    'heading2-3': '找到你喜爱的料理',
+    'heading3-1': '烹饪'
+  },
+  'contact': {
+    'heading1': '订阅我们',
+    'heading2': '联络我们',
+    'heading3': '食材',
+    'content1': '轻松变化每天菜色，找到零失败人气食谱。再也不用烦恼明天煮什麽。',
+    'location': '40701台中市西屯区台湾大道三段99号',
+    'time1': '礼拜一至礼拜五: 早上9:00 - 下午6:00',
+    'time2': '礼拜六: 早上9:00 - 下午4:00',
+    'eamil': 'Send Us Email'
+  },
+  'category': {
+    'beef': '牛肉',
+    'chicken': '鸡肉',
+    'dessert': '甜点',
+    'lamb': '羊肉',
+    'miscellaneous': '杂菜',
+    'pasta': '义大利面',
+    'pork': '猪肉',
+    'seafood': '海鲜',
+    'side': '配菜',
+    'starter': '开胃菜',
+    'vegan': '全素',
+    'vegetarian': '蛋奶素',
+    'breakfast': '早餐',
+    'goat': '山羊'
+  },
+  'modal': {
+    'area': '地区',
+    'category':'种类',
+    'instruction': '烹煮说明',
+    'ingredients': '食材'
+  },
+  'recipe': '食谱'
 }

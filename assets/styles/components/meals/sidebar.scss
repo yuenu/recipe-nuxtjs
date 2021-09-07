@@ -1,58 +1,102 @@
 .sidebar {
-  width:100%;
-  max-width:400px;
-  display:flex;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
   flex-direction: column;
-  gap:16px;
+  gap: 16px;
 
   &__box {
-    position:relative;
-    width:100%;
-    max-width:350px;
-    height:80px;
-    background-color:#eee;
-    display:flex;
-    align-items:center;
-    overflow:hidden;
-    padding:0 10px;
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    height: 80px;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 10px;
     gap: 30px;
-    cursor:pointer;
-    transition:250ms;
-    border-radius:5px;
+    cursor: pointer;
+    transition: 250ms;
+    border-radius: 5px;
     user-select: none;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
 
     &:hover {
-      box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
       transform: translateY(-2px);
     }
 
     &:active {
-      box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     }
   }
 
   &__box:hover &__name {
-    color:$color-secondary;
+    color: $color-secondary;
   }
 
   &__box:hover &__pic-left svg {
-    fill:$color-secondary;
+    fill: $color-secondary;
   }
 
-  &__pic-left{
-    margin-left:20px;
-    svg{
-      width:40px;
-      height:40px;
+  &__pic-left {
+    margin-left: 20px;
+    svg {
+      width: 40px;
+      height: 40px;
     }
   }
-  &__name{
-    font-size:20px;
-    
+  &__name {
+    font-size: 20px;
   }
-  &__pic-right{
-    max-width:130px;
-    position:absolute;
-    right:-20px;
+  &__pic-right {
+    max-width: 130px;
+    position: absolute;
+    right: -20px;
+  }
+
+  @include respond(tab-land) {
+    & {
+      max-width: 210px;
+    }
+
+    &__pic-left {
+      margin-left: 10px;
+    }
+
+    &__pic-right {
+      display: none;
+    }
+  }
+
+  @include respond(tab-port) {
+    & {
+      justify-content: center;
+      flex-direction: row;
+      max-width:100%;
+      flex-wrap:wrap;
+      margin:50px 0;
+    }
+
+    &__box {
+      overflow: unset;
+      width:200px;
+      gap:20px;
+      flex-basis: 30%;
+    }
+  }
+
+  @include respond (phone) {
+    &__box {
+      width:150px;
+      flex-basis:auto;
+    }
+
+    &__name {
+      text-overflow: ellipsis;
+      overflow:hidden;
+      white-space: nowrap;
+    }
   }
 }

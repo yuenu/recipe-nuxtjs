@@ -13,7 +13,7 @@
           </a>
         </div>
         <div class="header__brand">
-          <NuxtLink to="/" class="headerTop__brand--link">
+          <NuxtLink :to="localePath('/')" class="headerTop__brand--link">
             <img src="@/static/logo.png" alt="logo" />
           </NuxtLink>
         </div>
@@ -24,7 +24,8 @@
           <span class="header__address-text">{{ $t('header.location') }}</span>
         </div>
       </div>
-      <div class="header__bottom">
+      <div ref="navEl" class="header__wrapper">
+        <div  class="header__bottom">
         <div class="header__lang">
           <nuxt-link class="header__lang-cn" :to="switchLocalePath('cn')">
             簡
@@ -36,23 +37,23 @@
             EN
           </nuxt-link>
         </div>
-        <nav ref="navEl" class="header__nav">
+        <nav class="header__nav">
           <ul class="header__nav-list">
             <li>
-              <NuxtLink to="/">{{ $t('navigation.home') }}</NuxtLink>
+              <NuxtLink :to="localePath('/')">{{ $t('navigation.home') }}</NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/#about">{{ $t('navigation.about') }}</NuxtLink>
+              <NuxtLink :to="localePath('/#about')">{{ $t('navigation.about') }}</NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/meals">{{ $t('navigation.meals') }}</NuxtLink>
+              <NuxtLink :to="localePath('/meals')">{{ $t('navigation.meals') }}</NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/#contact">{{ $t('navigation.contact') }}</NuxtLink>
+              <NuxtLink :to="localePath('/#contact')">{{ $t('navigation.contact') }}</NuxtLink>
             </li>
           </ul>
         </nav>
-        <div class="header__social">
+        <!-- <div class="header__social">
           <a href="https://www.facebook.com/">
             <Icon :name="'facebook'" />
           </a>
@@ -62,23 +63,28 @@
           <a href="https://www.instagram.com/">
             <Icon :name="'instagram'" />
           </a>
-        </div>
+        </div> -->
         <div class="header__control">
-          <Icon :name="'search'" />
-          <Icon :name="'heart'" />
+          <Icon :name="'search'" @click.native="searchFormOpen" />
+          <Icon :name="'heart'" @click.native="collectionOpen" />
         </div>
       </div>
+      </div>
     </div>
+
+    <SearchTern :search-form-active="searchFormActive" @formClose="searchFormClose" />
   </header>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Ref } from 'nuxt-property-decorator'
 import Icon from '@/utils/icons.vue'
+import SearchTern from '@/components/SearchTern.vue'
 
 @Component<Hero>({
   components: {
     Icon,
+    SearchTern
   },
   mounted() {
     window.addEventListener('scroll', () => {
@@ -102,6 +108,24 @@ export default class Hero extends Vue {
         this.navEl.classList.remove('sticky')
       }
     }
+  }
+
+  // SEARCH CONTROAL
+  searchFormActive = false
+
+  searchFormClose() {
+    this.searchFormActive = false
+  }
+
+  searchFormOpen() {
+    console.log('open')
+    this.searchFormActive = true
+  }
+
+
+  // Collection control
+  collectionOpen() {
+    console.log('collection open')
   }
 }
 </script>

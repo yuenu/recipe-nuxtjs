@@ -21,7 +21,7 @@ export default (ctx: Context, inject: Inject): void => {
 
   const storeModules = {} as StoreAppContextInterface
   const keys = Object.keys(storeModulesClasses) as Array<
-    keyof typeof storeModulesClasses
+  keyof typeof storeModulesClasses
   >
 
   keys.forEach((key: keyof typeof storeModulesClasses) => {
