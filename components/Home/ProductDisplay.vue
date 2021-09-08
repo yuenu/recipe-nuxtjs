@@ -1,5 +1,5 @@
 <template>
-  <section class="product">
+  <section id="product" class="product">
     <h1 class="product__heading">Product display</h1>
     <div ref="swiperComponentRef" class="product__categories">
       <div

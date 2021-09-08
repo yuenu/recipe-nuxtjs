@@ -24,7 +24,8 @@
           <span class="header__address-text">{{ $t('header.location') }}</span>
         </div>
       </div>
-      <div class="header__bottom">
+      <div ref="navEl" class="header__wrapper">
+        <div  class="header__bottom">
         <div class="header__lang">
           <nuxt-link class="header__lang-cn" :to="switchLocalePath('cn')">
             簡
@@ -36,7 +37,7 @@
             EN
           </nuxt-link>
         </div>
-        <nav ref="navEl" class="header__nav">
+        <nav class="header__nav">
           <ul class="header__nav-list">
             <li>
               <NuxtLink :to="localePath('/')">{{ $t('navigation.home') }}</NuxtLink>
@@ -67,6 +68,7 @@
           <Icon :name="'search'" />
           <Icon :name="'heart'" />
         </div>
+      </div>
       </div>
     </div>
   </header>

@@ -16,7 +16,7 @@
       <div class="intro__description">
         {{ $t('home.intro.description') }}
       </div>
-      <NuxtLink :to="localePath('/')" class="ctaBtn text-dark">
+      <NuxtLink :to="localePath('/#product')" class="ctaBtn text-dark">
         {{ $t('home.ctaBtn') }}
       </NuxtLink>
     </div>
