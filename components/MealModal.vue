@@ -24,6 +24,8 @@
         />
       </div>
       <div class="modal__tag">
+        <a :href="meal.strYoutube" class="modal__youtube">Youtube</a>
+
         <div>
           <div class="modal__label">Area:</div>
           <div class="modal__text">{{ meal.strArea }}</div>
