@@ -24,8 +24,6 @@
         />
       </div>
       <div class="modal__tag">
-        <a :href="meal.strYoutube" class="modal__youtube">Youtube</a>
-
         <div>
           <div class="modal__label">Area:</div>
           <div class="modal__text">{{ meal.strArea }}</div>
@@ -34,6 +32,7 @@
           <div class="modal__label">Category:</div>
           <div class="modal__text">{{ meal.strCategory }}</div>
         </div>
+        <a v-if="meal.strYoutube" :href="meal.strYoutube" class="modal__youtube" target="_blank">Youtube</a>
       </div>
       <div class="modal__info">
         <h2 class="modal__info-heading">Instruction</h2>

@@ -13,7 +13,7 @@
           </a>
         </div>
         <div class="header__brand">
-          <NuxtLink to="/" class="headerTop__brand--link">
+          <NuxtLink :to="localePath('/')" class="headerTop__brand--link">
             <img src="@/static/logo.png" alt="logo" />
           </NuxtLink>
         </div>
@@ -39,20 +39,20 @@
         <nav ref="navEl" class="header__nav">
           <ul class="header__nav-list">
             <li>
-              <NuxtLink to="/">{{ $t('navigation.home') }}</NuxtLink>
+              <NuxtLink :to="localePath('/')">{{ $t('navigation.home') }}</NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/#about">{{ $t('navigation.about') }}</NuxtLink>
+              <NuxtLink :to="localePath('/#about')">{{ $t('navigation.about') }}</NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/meals">{{ $t('navigation.meals') }}</NuxtLink>
+              <NuxtLink :to="localePath('/meals')">{{ $t('navigation.meals') }}</NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/#contact">{{ $t('navigation.contact') }}</NuxtLink>
+              <NuxtLink :to="localePath('/#contact')">{{ $t('navigation.contact') }}</NuxtLink>
             </li>
           </ul>
         </nav>
-        <div class="header__social">
+        <!-- <div class="header__social">
           <a href="https://www.facebook.com/">
             <Icon :name="'facebook'" />
           </a>
@@ -62,7 +62,7 @@
           <a href="https://www.instagram.com/">
             <Icon :name="'instagram'" />
           </a>
-        </div>
+        </div> -->
         <div class="header__control">
           <Icon :name="'search'" />
           <Icon :name="'heart'" />

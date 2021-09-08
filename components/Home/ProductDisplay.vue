@@ -70,9 +70,6 @@ import Icon from '@/utils/icons.vue'
     Swiper,
     SwiperSlide,
     Skeleton
-  },
-  mounted() {
-    console.log(this.$nuxt)
   }
 })
 export default class ProductDisplay extends Vue {
@@ -84,7 +81,7 @@ export default class ProductDisplay extends Vue {
   swiperComponentOption  = {
     slidesPerView: 4,
     slidesPerGroup: 4,
-    spaceBetween: 20,
+    spaceBetween: 50,
     pagination: {
       el: '.swiper-pagination',
       clickable: true

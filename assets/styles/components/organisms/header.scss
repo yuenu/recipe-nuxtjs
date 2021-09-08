@@ -6,7 +6,9 @@
   @include respond(phone) {
     &__lang,
     &__social,
-    &__control {
+    &__control,
+    &__address,
+    &__phone {
       display: none !important;
     }
 
@@ -14,6 +16,10 @@
       width: 100%;
       display:flex;
       justify-content: center;
+    }
+
+    &__bottom {
+      height:40px;
     }
   }
 
