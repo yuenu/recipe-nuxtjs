@@ -12,7 +12,7 @@
           <Icon :name="category.strCategory.toLowerCase()" :type="'category'" />
         </div>
         <div class="product__category-text">
-          {{ category.strCategory }}
+          {{ $t(`category.${category.strCategory.toLowerCase()}`) }}
         </div>
       </div>
     </div>
@@ -46,7 +46,7 @@
             class="product__card-detail"
             @click="$emit('getMealDetail', meal.idMeal)"
           >
-            Recipe
+            {{ $t('recipe') }}
           </button>
         </div>
       </SwiperSlide>

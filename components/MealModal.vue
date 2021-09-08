@@ -25,17 +25,17 @@
       </div>
       <div class="modal__tag">
         <div>
-          <div class="modal__label">Area:</div>
+          <div class="modal__label">{{ $t('modal.area') }}:</div>
           <div class="modal__text">{{ meal.strArea }}</div>
         </div>
         <div>
-          <div class="modal__label">Category:</div>
+          <div class="modal__label">{{ $t('modal.category') }}:</div>
           <div class="modal__text">{{ meal.strCategory }}</div>
         </div>
         <a v-if="meal.strYoutube" :href="meal.strYoutube" class="modal__youtube" target="_blank">Youtube</a>
       </div>
       <div class="modal__info">
-        <h2 class="modal__info-heading">Instruction</h2>
+        <h2 class="modal__info-heading">{{ $t('modal.instruction') }}</h2>
         <div
           class="modal__info-instructions"
           v-html="meal.strInstructions.replace(/\r?\n/g, '<br />')"
@@ -43,7 +43,7 @@
       </div>
 
       <div class="modal__info">
-        <h2 class="modal__info-heading">Ingredients</h2>
+        <h2 class="modal__info-heading">{{ $t('modal.ingredients') }}</h2>
         <li
           v-for="(ingrendient, index) in meal.strIngredients"
           :key="index"

@@ -7,9 +7,9 @@
       <h5 class="hero__secondary">
         {{ $t('home.hero.secondary') }}
       </h5>
-      <button class="ctaBtn">
+      <NuxtLink :to="localePath('/')" class="ctaBtn">
         {{ $t('home.ctaBtn') }}
-      </button>
+      </NuxtLink>
     </div>
   </section>
 </template>

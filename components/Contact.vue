@@ -1,10 +1,10 @@
 <template>
   <section id="contact" class="contact">
     <div class="contact__card">
-      <h2 class="contact__title">SIGN UP FOR OUR UPDATE</h2>
+      <h2 class="contact__title">{{ $t('contact.heading1') }}</h2>
       <div class="contact__content">
         <div class="contact__text">
-          <span>To stay up-to-date on our promotions,</span>
+          <span>{{ $t('contact.content1') }}</span>
           <br />
           <span>discounts, sales, special offers and more.</span>
         </div>
@@ -26,11 +26,11 @@
       </div>
     </div>
     <div class="contact__card">
-      <h2 class="contact__title">CONTACT US</h2>
+      <h2 class="contact__title">{{ $t('contact.heading2') }}</h2>
       <div class="contact__content">
         <div class="contact__info">
           <Icon :name="'map-pin'" :color="'#ffc139'" />
-          <span> 34 Fordham Street, New York, NY 10027</span>
+          <span>{{ $t('contact.location') }}</span>
         </div>
 
         <div class="contact__info">
@@ -43,22 +43,22 @@
         <div class="contact__info">
           <Icon :name="'clock'" :color="'#ffc139'" />
           <div class="contact__infor-text">
-            <span> Monday-Friday: 9:00 am - 6:00 pm</span>
+            <span>{{ $t('contact.time1') }}</span>
             <br />
-            <span>Saturday: 9:00 am - 4:00 pm</span>
+            <span>{{ $t('contact.time2') }}</span>
           </div>
         </div>
 
         <div class="contact__info">
           <a href="#">
             <Icon :name="'mail'" :color="'#ffc139'" />
-            <strong>Send us an email</strong>
+            <strong>Send us an Email</strong>
           </a>
         </div>
       </div>
     </div>
     <div class="contact__card">
-      <h2 class="contact__title">INSTAGRAMS</h2>
+      <h2 class="contact__title">{{ $t('contact.heading3') }}</h2>
       <div class="contact__content">
         <div
           v-for="category in getCategories"

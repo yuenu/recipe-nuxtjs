@@ -20,7 +20,7 @@
             class="meal__card-detail"
             @click="$emit('getMealDetail', meal.idMeal)"
           >
-            Recipe
+            {{ $t('recipe') }}
           </button>
           <Icon class="meal__card-collect" :name="'heart'" />
         </div>

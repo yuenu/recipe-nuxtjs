@@ -16,7 +16,9 @@
       <div class="intro__description">
         {{ $t('home.intro.description') }}
       </div>
-      <button class="ctaBtn text-dark">{{ $t('home.ctaBtn') }}</button>
+      <NuxtLink :to="localePath('/')" class="ctaBtn text-dark">
+        {{ $t('home.ctaBtn') }}
+      </NuxtLink>
     </div>
   </section>
 </template>
