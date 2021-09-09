@@ -6,7 +6,7 @@
       @close="onModalClose"
     />
     <div class="main__container">
-      <Header />
+      <MealHeader :search-term="getSearchTerm" />
       <div class="meal__wrapper">
         <MealSidebar
           :categories="getCategories"
@@ -16,25 +16,12 @@
       </div>
       <Contact :categories="getCategories" />
     </div>
-    <div class="test">
-      <p v-if="$fetchState.pending">Fetching mountains...</p>
-      <p v-else-if="$fetchState.error">An error occurred :(</p>
-      <div v-else>
-        <h1>Nuxt Mountains</h1>
-        <ul>
-          <li v-for="mountain of mountains" :key="mountain.slug">
-            {{ mountain.title }}
-          </li>
-        </ul>
-        <button @click="$fetch">Refresh</button>
-      </div>
-    </div>
   </main>
 </template>
 
 <script lang="ts">
 import { Component, Vue, getModule } from 'nuxt-property-decorator'
-import Header from '@/components/Meals/Header.vue'
+import MealHeader from '@/components/Meals/MealHeader.vue'
 import MealSidebar from '@/components/Meals/MealSidebar.vue'
 import MealList from '@/components/Meals/MealsList.vue'
 import Contact from '@/components/Contact.vue'
@@ -44,20 +31,14 @@ import App from '@/store/app'
 
 @Component<MealsPage>({
   components: {
-    Header,
+    MealHeader,
     MealSidebar,
     MealList,
     Contact,
     Modal,
   },
-  created() {
-    this.$store.registerModule('myApp', App)
-  },
   mounted() {
     this.setup()
-  },
-  beforeDestroy() {
-    this.$store.unregisterModule('myApp')
   },
 })
 export default class MealsPage extends Vue {
@@ -80,6 +61,10 @@ export default class MealsPage extends Vue {
     return this.storeModule.mealDetail
   }
 
+  get getSearchTerm() {
+    return this.storeModule.searchTerm
+  }
+
   async setup() {
     await this.storeModule.getAllCategories()
   }
@@ -98,14 +83,6 @@ export default class MealsPage extends Vue {
   onModalClose() {
     this.isModalOpen = false
     document.body.style.overflow = 'auto'
-  }
-
-  // nuxt fetch function test
-  mountains = []
-  async fetch() {
-    this.mountains = await fetch('https://api.nuxtjs.dev/mountains').then(
-      (res) => res.json()
-    )
   }
 }
 </script>

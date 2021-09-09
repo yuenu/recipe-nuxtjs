@@ -74,6 +74,5 @@ export default class App extends VuexModule {
       this.STORE_SEARCHTERM(searchName)
       this.STORE_MEALS(meals)
     }
-    console.log('fetch meal by name:', meals)
   }
 }
