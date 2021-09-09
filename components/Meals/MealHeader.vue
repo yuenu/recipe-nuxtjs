@@ -1,16 +1,20 @@
 <template>
   <section class="meal__banner">
     <span class="meal__banner-text">
-      {{ bannerText }}
+      {{ getSearchTerm }}
     </span>
   </section>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
+import { Component, Vue, Prop } from 'nuxt-property-decorator'
 
 @Component<MealsHeader>({})
 export default class MealsHeader extends Vue {
-  bannerText = 'bannerText'
+  @Prop({default: '', type: String}) searchTerm!: string
+  
+  get getSearchTerm() {
+    return this.searchTerm
+  }
 }
 </script>
