@@ -32,7 +32,13 @@
           <div class="modal__label">{{ $t('modal.category') }}:</div>
           <div class="modal__text">{{ meal.strCategory }}</div>
         </div>
-        <a v-if="meal.strYoutube" :href="meal.strYoutube" class="modal__youtube" target="_blank">Youtube</a>
+        <a
+          v-if="meal.strYoutube"
+          :href="meal.strYoutube"
+          class="modal__youtube"
+          target="_blank"
+          >Youtube</a
+        >
       </div>
       <div class="modal__info">
         <h2 class="modal__info-heading">{{ $t('modal.instruction') }}</h2>

@@ -11,8 +11,8 @@ import { Component, Vue, Prop } from 'nuxt-property-decorator'
 
 @Component<MealsHeader>({})
 export default class MealsHeader extends Vue {
-  @Prop({default: '', type: String}) searchTerm!: string
-  
+  @Prop({ default: '', type: String }) searchTerm!: string
+
   get getSearchTerm() {
     return this.searchTerm
   }

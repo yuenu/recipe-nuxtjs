@@ -15,7 +15,9 @@
           :type="'category'"
         />
       </div>
-      <span class="sidebar__name">{{ $t(`category.${category.strCategory.toLowerCase()}`) }}</span>
+      <span class="sidebar__name">{{
+        $t(`category.${category.strCategory.toLowerCase()}`)
+      }}</span>
       <div class="sidebar__pic-right">
         <img
           :src="category.strCategoryThumb"

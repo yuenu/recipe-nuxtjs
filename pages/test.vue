@@ -10,13 +10,12 @@
       </section>
     </div>
     <Skeleton v-skeleton="{ text: 'apple' }" :height="10" :width="100" />
-    <br>
+    <br />
     <Skeleton
       v-skeleton="{ src: imgSrc, alt: 'custom-image' }"
       :height="200"
       :width="300"
     />
-    
   </section>
 </template>
 
@@ -32,7 +31,6 @@ import Skeleton from '@/components/Skeleton.vue'
 export default class TestPage extends Vue {
   imgSrc =
   'https://images.unsplash.com/photo-1593642634443-44adaa06623a?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1225&q=80'
-
 }
 </script>
 

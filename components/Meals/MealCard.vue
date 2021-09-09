@@ -39,7 +39,7 @@ import Icon from '@/utils/icons.vue'
 @Component<MealCard>({
   components: {
     Icon,
-    Skeleton
+    Skeleton,
   },
 })
 export default class MealCard extends Vue {

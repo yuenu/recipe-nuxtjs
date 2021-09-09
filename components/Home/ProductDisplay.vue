@@ -28,7 +28,7 @@
         class="product__card"
       >
         <div class="product__card-pic">
-          <Skeleton 
+          <Skeleton
             v-skeleton="{ src: meal.strMealThumb, alt: meal.strMeal }"
             :width="'100%'"
             :height="'100%'"
@@ -69,8 +69,8 @@ import Icon from '@/utils/icons.vue'
     Icon,
     Swiper,
     SwiperSlide,
-    Skeleton
-  }
+    Skeleton,
+  },
 })
 export default class ProductDisplay extends Vue {
   @Ref() swiperComponentRef!: HTMLElement
@@ -78,14 +78,14 @@ export default class ProductDisplay extends Vue {
   @Prop({ type: Array, required: true }) categories!: Categories[]
   @Prop({ type: Array, required: true }) meals!: Meal[]
 
-  swiperComponentOption  = {
+  swiperComponentOption = {
     slidesPerView: 4,
     slidesPerGroup: 4,
     spaceBetween: 50,
     pagination: {
       el: '.swiper-pagination',
-      clickable: true
-    }
+      clickable: true,
+    },
   }
 
   get getCategories() {

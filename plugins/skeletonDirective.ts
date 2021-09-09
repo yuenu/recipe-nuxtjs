@@ -4,11 +4,11 @@ Vue.directive('skeleton', {
   bind(el, binding) {
     function createImage() {
       const img = new Image()
-      if(binding.value && binding.value.src) {
+      if (binding.value && binding.value.src) {
         const { src, alt } = binding.value
         img.setAttribute('alt', alt)
         img.setAttribute('src', src)
-      } 
+      }
 
       img.onload = function () {
         el.appendChild(img)
@@ -25,7 +25,7 @@ Vue.directive('skeleton', {
     }
 
     setTimeout(() => {
-      if(binding.value && binding.value.text) {
+      if (binding.value && binding.value.text) {
         createText()
       } else {
         createImage()

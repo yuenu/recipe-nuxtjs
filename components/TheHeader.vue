@@ -25,35 +25,43 @@
         </div>
       </div>
       <div ref="navEl" class="header__wrapper">
-        <div  class="header__bottom">
-        <div class="header__lang">
-          <nuxt-link class="header__lang-cn" :to="switchLocalePath('cn')">
-            簡
-          </nuxt-link>
-          <nuxt-link class="header__lang-tw" :to="switchLocalePath('tw')">
-            繁
-          </nuxt-link>
-          <nuxt-link class="header__lang-en" :to="switchLocalePath('en')">
-            EN
-          </nuxt-link>
-        </div>
-        <nav class="header__nav">
-          <ul class="header__nav-list">
-            <li>
-              <NuxtLink :to="localePath('/')">{{ $t('navigation.home') }}</NuxtLink>
-            </li>
-            <li>
-              <NuxtLink :to="localePath('/#about')">{{ $t('navigation.about') }}</NuxtLink>
-            </li>
-            <li>
-              <NuxtLink :to="localePath('/meals')">{{ $t('navigation.meals') }}</NuxtLink>
-            </li>
-            <li>
-              <NuxtLink :to="localePath('/#contact')">{{ $t('navigation.contact') }}</NuxtLink>
-            </li>
-          </ul>
-        </nav>
-        <!-- <div class="header__social">
+        <div class="header__bottom">
+          <div class="header__lang">
+            <nuxt-link class="header__lang-cn" :to="switchLocalePath('cn')">
+              簡
+            </nuxt-link>
+            <nuxt-link class="header__lang-tw" :to="switchLocalePath('tw')">
+              繁
+            </nuxt-link>
+            <nuxt-link class="header__lang-en" :to="switchLocalePath('en')">
+              EN
+            </nuxt-link>
+          </div>
+          <nav class="header__nav">
+            <ul class="header__nav-list">
+              <li>
+                <NuxtLink :to="localePath('/')">{{
+                  $t('navigation.home')
+                }}</NuxtLink>
+              </li>
+              <li>
+                <NuxtLink :to="localePath('/#about')">{{
+                  $t('navigation.about')
+                }}</NuxtLink>
+              </li>
+              <li>
+                <NuxtLink :to="localePath('/meals')">{{
+                  $t('navigation.meals')
+                }}</NuxtLink>
+              </li>
+              <li>
+                <NuxtLink :to="localePath('/#contact')">{{
+                  $t('navigation.contact')
+                }}</NuxtLink>
+              </li>
+            </ul>
+          </nav>
+          <!-- <div class="header__social">
           <a href="https://www.facebook.com/">
             <Icon :name="'facebook'" />
           </a>
@@ -64,27 +72,37 @@
             <Icon :name="'instagram'" />
           </a>
         </div> -->
-        <div class="header__control">
-          <Icon :name="'search'" @click.native="searchFormOpen" />
-          <Icon :name="'heart'" @click.native="collectionOpen" />
+          <div class="header__control">
+            <Icon :name="'search'" @click.native="searchFormOpen" />
+            <Icon :name="'heart'" @click.native="collectionOpen" />
+          </div>
         </div>
-      </div>
       </div>
     </div>
 
-    <SearchTern :search-form-active="searchFormActive" @formClose="searchFormClose" />
+    <SearchTern
+      v-if="searchFormActive"
+      :search-form-active="searchFormActive"
+      @formClose="searchFormClose"
+      @searchSubmit="searchSubmit"
+    />
   </header>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Ref } from 'nuxt-property-decorator'
+import { Vue, Component, Ref, getModule } from 'nuxt-property-decorator'
 import Icon from '@/utils/icons.vue'
 import SearchTern from '@/components/SearchTern.vue'
+
+import App from '@/store/app'
 
 @Component<Hero>({
   components: {
     Icon,
-    SearchTern
+    SearchTern,
+  },
+  created() {
+    this.$store.registerModule('myApp', App)
   },
   mounted() {
     window.addEventListener('scroll', () => {
@@ -94,12 +112,19 @@ import SearchTern from '@/components/SearchTern.vue'
       )
     })
   },
+  beforeDestroy() {
+    this.$store.unregisterModule('myApp')
+  },
 })
 export default class Hero extends Vue {
   @Ref() navEl!: HTMLElement
 
-  requestAnimationFrameTimer = 0
+  get storeModule() {
+    return getModule(App, this.$store)
+  }
 
+  // Header scroll sticky animation
+  requestAnimationFrameTimer = 0
   toggleHeaderSticky() {
     if (this.navEl) {
       if (window.pageYOffset > 70) {
@@ -118,10 +143,12 @@ export default class Hero extends Vue {
   }
 
   searchFormOpen() {
-    console.log('open')
     this.searchFormActive = true
   }
 
+  searchSubmit(searchInput: string) {
+    this.storeModule.getMealByName(searchInput)
+  }
 
   // Collection control
   collectionOpen() {

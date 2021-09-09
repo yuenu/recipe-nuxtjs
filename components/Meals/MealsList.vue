@@ -36,11 +36,11 @@ export default class MealsList extends Vue {
   // Pagination control
   onePageDisplayMealCount = 9
   currentPage = 1
-  
+
   get getMeals() {
     return this.meals
   }
-  
+
   get pages() {
     return this.getMeals
       ? Math.ceil(this.getMeals.length / this.onePageDisplayMealCount)
