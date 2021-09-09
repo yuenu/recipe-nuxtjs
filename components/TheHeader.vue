@@ -74,7 +74,7 @@
         </div> -->
           <div class="header__control">
             <Icon :name="'search'" @click.native="searchFormOpen" />
-            <Icon :name="'heart'" @click.native="collectionOpen" />
+            <Collection />
           </div>
         </div>
       </div>
@@ -93,6 +93,7 @@
 import { Vue, Component, Ref, getModule } from 'nuxt-property-decorator'
 import Icon from '@/utils/icons.vue'
 import SearchTern from '@/components/SearchTern.vue'
+import Collection from '@/components/Collection.vue'
 
 import App from '@/store/app'
 
@@ -100,6 +101,7 @@ import App from '@/store/app'
   components: {
     Icon,
     SearchTern,
+    Collection
   },
   created() {
     this.$store.registerModule('myApp', App)

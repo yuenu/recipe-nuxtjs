@@ -5,7 +5,7 @@ import {
   fetchMealsByCategory,
   fetchMealsByName,
 } from '@/utils/api'
-import { Categories, Meal } from '@/types'
+import { Categories, Meal, CategoryMeals } from '@/types'
 
 @Module({
   name: 'myApp',
@@ -17,6 +17,7 @@ export default class App extends VuexModule {
   categories: Categories[] = []
   mealDetail: Meal[] = []
   searchTerm = ''
+  collection: CategoryMeals[] = []
 
   @Mutation
   STORE_CATEGORIES(data: Categories[]) {
@@ -41,6 +42,27 @@ export default class App extends VuexModule {
   @Mutation
   STORE_SEARCHTERM(term: string) {
     this.searchTerm = term
+  }
+
+  @Mutation
+  ADD_MEAL_TO_COLLECTED(selectedMeal: CategoryMeals) {
+    const mealInCollectedIndex = this.collection.findIndex((meal) => {
+      return meal.idMeal === selectedMeal.idMeal
+    })
+
+    if (mealInCollectedIndex === -1) {
+      console.log('not in collected, add to collection')
+      this.collection.push(selectedMeal)
+    } else {
+      console.log('already in collection')
+    }
+  }
+
+  @Mutation
+  REMOVE_MEAL_FROM_COLLECTION(selectedMeal: CategoryMeals) {
+    this.collection = this.collection.filter(
+      (meal) => meal.idMeal !== selectedMeal.idMeal
+    )
   }
 
   @Action
