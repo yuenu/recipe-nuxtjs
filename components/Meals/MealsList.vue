@@ -3,7 +3,11 @@
     <div v-if="meals.length === 0" class="meal__list-el">
       <img src="@/assets/images/no_result.gif" alt="no-result" />
     </div>
-    <MealCard :meals="handlePageDisplay" @getMealDetail="getMealDetail" />
+    <MealCard
+      :meals="handlePageDisplay"
+      @getMealDetail="getMealDetail"
+      @collectedMeal="collectedMeal"
+    />
     <Pagination
       :pages="pages"
       :current-page="currentPage"
@@ -31,6 +35,10 @@ export default class MealsList extends Vue {
 
   getMealDetail(mealId: string) {
     this.$emit('getMealDetail', mealId)
+  }
+
+  collectedMeal(mealId: string) {
+    this.$emit('collectedMeal', mealId)
   }
 
   // Pagination control

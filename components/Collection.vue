@@ -3,16 +3,21 @@
     <Icon
       :class="['collection__icon', { active: isActive }]"
       :name="'heart'"
-      @click.native="collectionStatus"
+      @click.native="collectionStatusControl"
     />
     <div :class="['collection__container', { active: isActive }]">
-      <div class="collection__heading">{{ $t('header.collection')}}</div>
+      <div class="collection__heading">{{ $t('header.collection') }}</div>
       <div class="collection__content">
-        <div class="collection__box" @click="getMealDetail">
+        <div
+          v-for="collection in getCollection"
+          :key="collection.idMeal"
+          class="collection__box"
+          @click="getMealDetail(collection.idMeal)"
+        >
           <div class="collection__box-img">
-            <img src="@/assets/images/feature-3.png" alt="fake-data" />
+            <img :src="collection.strMealThumb" :alt="collection.strMeal" />
           </div>
-          <div class="collection__box-name">Fake name meals</div>
+          <div class="collection__box-name">{{ collection.strMeal }}</div>
           <Icon
             class="collection__box-delete"
             :name="'delete'"
@@ -26,8 +31,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
+import { Component, Prop, Vue } from 'nuxt-property-decorator'
 import Icon from '@/utils/icons.vue'
+import { CategoryMeals } from '@/types/index'
 
 @Component<Collection>({
   components: {
@@ -35,15 +41,20 @@ import Icon from '@/utils/icons.vue'
   },
 })
 export default class Collection extends Vue {
+  @Prop({ type: Array }) collection!: CategoryMeals[]
+
   isActive = false
 
-  collectionStatus() {
-    console.log('collection clicked')
+  get getCollection() {
+    return this.collection
+  }
+
+  collectionStatusControl() {
     this.isActive = !this.isActive
   }
 
-  getMealDetail() {
-    console.log('get meal detail')
+  getMealDetail(mealId: string) {
+    console.log('get meal detail', mealId)
   }
 
   deleteMealFromCollection() {

@@ -104,6 +104,14 @@
     &-collect {
       position: relative;
       top: 5px;
+
+      svg {
+        stroke:#ed2c49;
+      }
+    }
+
+    &-collect.active svg {
+      fill:#ed2c49;
     }
   }
 

@@ -12,7 +12,11 @@
           :categories="getCategories"
           @getCategoryMeals="onCategoryMeals"
         />
-        <MealList :meals="getMeals" @getMealDetail="onMealDetail" />
+        <MealList
+          :meals="getMeals"
+          @getMealDetail="onMealDetail"
+          @collectedMeal="collectedMeal"
+        />
       </div>
       <Contact :categories="getCategories" />
     </div>
@@ -63,6 +67,11 @@ export default class MealsPage extends Vue {
 
   get getSearchTerm() {
     return this.storeModule.searchTerm
+  }
+
+  collectedMeal(mealId: string) {
+    console.log('add to collection', mealId)
+    this.storeModule.ADD_MEAL_TO_COLLECTED(mealId)
   }
 
   async setup() {

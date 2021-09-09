@@ -13,11 +13,13 @@ import { Categories, Meal, CategoryMeals } from '@/types'
   namespaced: true,
 })
 export default class App extends VuexModule {
-  meals: Meal[] = []
+  meals: CategoryMeals[] = []
   categories: Categories[] = []
   mealDetail: Meal[] = []
   searchTerm = ''
   collection: CategoryMeals[] = []
+  // TODO: definded the Set type complete
+  collectionSet = new Set()
 
   @Mutation
   STORE_CATEGORIES(data: Categories[]) {
@@ -30,7 +32,7 @@ export default class App extends VuexModule {
   }
 
   @Mutation
-  STORE_MEALS(data: Meal[]) {
+  STORE_MEALS(data: CategoryMeals[]) {
     this.meals = data
   }
 
@@ -45,24 +47,29 @@ export default class App extends VuexModule {
   }
 
   @Mutation
-  ADD_MEAL_TO_COLLECTED(selectedMeal: CategoryMeals) {
-    const mealInCollectedIndex = this.collection.findIndex((meal) => {
-      return meal.idMeal === selectedMeal.idMeal
-    })
-
-    if (mealInCollectedIndex === -1) {
-      console.log('not in collected, add to collection')
-      this.collection.push(selectedMeal)
+  ADD_MEAL_TO_COLLECTED(mealId: string) {
+    if (this.collectionSet.has(mealId)) {
+      // TODO: Use REMOVE MUTATION
+      const mealOnCollectionIndex = this.collection.findIndex(
+        (meal) => meal.idMeal === mealId
+      )
+      this.collection.splice(mealOnCollectionIndex, 1)
+      this.collectionSet.delete(mealId)
     } else {
-      console.log('already in collection')
+      this.collectionSet.add(mealId)
+      const collectedMeal = this.meals.filter((meal) => meal.idMeal === mealId)
+      this.collection.push({ ...collectedMeal[0], collected: true })
+      console.log(this.collection)
     }
   }
 
   @Mutation
-  REMOVE_MEAL_FROM_COLLECTION(selectedMeal: CategoryMeals) {
-    this.collection = this.collection.filter(
-      (meal) => meal.idMeal !== selectedMeal.idMeal
+  REMOVE_MEAL_FROM_COLLECTION(mealId: string) {
+    const mealOnCollectionIndex = this.collection.findIndex(
+      (meal) => meal.idMeal === mealId
     )
+    this.collection.splice(mealOnCollectionIndex, 1)
+    this.collectionSet.delete(mealId)
   }
 
   @Action
@@ -77,7 +84,11 @@ export default class App extends VuexModule {
   async getFilterByCategory(category: string) {
     const { meals } = await fetchMealsByCategory(category)
     this.STORE_SEARCHTERM(category)
-    this.STORE_MEALS(meals)
+    const handleMealsData = []
+    for (const meal of meals) {
+      handleMealsData.push({ ...meal, collected: false })
+    }
+    this.STORE_MEALS(handleMealsData)
   }
 
   @Action

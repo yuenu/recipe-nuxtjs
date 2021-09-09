@@ -74,7 +74,7 @@
         </div> -->
           <div class="header__control">
             <Icon :name="'search'" @click.native="searchFormOpen" />
-            <Collection />
+            <Collection :collection="getCollection" />
           </div>
         </div>
       </div>
@@ -125,6 +125,10 @@ export default class Hero extends Vue {
     return getModule(App, this.$store)
   }
 
+  get getCollection () {
+    return this.storeModule.collection
+  }
+
   // Header scroll sticky animation
   requestAnimationFrameTimer = 0
   toggleHeaderSticky() {
@@ -150,11 +154,6 @@ export default class Hero extends Vue {
 
   searchSubmit(searchInput: string) {
     this.storeModule.getMealByName(searchInput)
-  }
-
-  // Collection control
-  collectionOpen() {
-    console.log('collection open')
   }
 }
 </script>

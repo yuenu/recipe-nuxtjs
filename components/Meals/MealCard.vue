@@ -22,7 +22,11 @@
           >
             {{ $t('recipe') }}
           </button>
-          <Icon class="meal__card-collect" :name="'heart'" />
+          <Icon
+            :class="['meal__card-collect', { active: meal.collected }]"
+            :name="'heart'"
+            @click.native="$emit('collectedMeal', meal.idMeal)"
+          />
         </div>
       </div>
     </div>
