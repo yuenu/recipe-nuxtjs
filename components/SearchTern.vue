@@ -35,6 +35,7 @@ import { Vue, Component, Prop } from 'nuxt-property-decorator'
 export default class SearchTern extends Vue {
   @Prop({ default: false, type: Boolean }) searchFormActive!: boolean
 
+  // TODO: Router query should be work
   searchInput = ''
   // For popup animation, have to use component data instead prop data
   formActive = false
@@ -45,7 +46,7 @@ export default class SearchTern extends Vue {
 
   errorMessage = ''
   checkInputIsEnglishLetter(input: string) {
-    return /^[a-zA-Z]*$/.test(input)
+    return /^[a-zA-Z\s]*$/.test(input)
   }
 
   formSubmit() {
