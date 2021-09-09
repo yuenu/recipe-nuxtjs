@@ -75,5 +75,6 @@ export default {
     'instruction': 'INSTRUCTION',
     'ingredients': 'INGREDIENTS'
   },
-  'recipe': 'Recipe'
+  'recipe': 'Recipe',
+  'error-message': 'Only accept english letter'
 }

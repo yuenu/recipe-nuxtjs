@@ -72,8 +72,9 @@ export default {
   'modal': {
     'area': '地區',
     'category':'種類',
-    'instruction': '烹煮說明',
+    'instruction': '料理步驟',
     'ingredients': '食材'
   },
-  'recipe': '食譜'
+  'recipe': '食譜',
+  'error-message': '只允許英文字母'
 }

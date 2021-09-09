@@ -44,14 +44,8 @@ import Modal from '@/components/MealModal.vue'
     Contact,
     Modal,
   },
-  created() {
-    this.$store.registerModule('myApp', App)
-  },
   mounted() {
     this.setup()
-  },
-  beforeDestroy() {
-    this.$store.unregisterModule('myApp')
   },
 })
 export default class IndexPage extends Vue {

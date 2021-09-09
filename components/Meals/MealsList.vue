@@ -1,5 +1,5 @@
 <template>
-  <section class="meal__list">
+  <section id="mealResult" class="meal__list">
     <div v-if="meals.length === 0" class="meal__list-el">
       <img src="@/assets/images/no_result.gif" alt="no-result" />
     </div>
