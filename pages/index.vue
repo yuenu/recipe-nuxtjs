@@ -8,7 +8,7 @@
     <div class="main__container">
       <Hero />
       <Intro />
-      <Feature />
+      <Feature @getMealDetail="onGetMealDetail" />
       <Characteristics />
       <ProductDisplay
         :categories="getCategories"
