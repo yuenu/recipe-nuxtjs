@@ -1,77 +1,33 @@
 <template>
-  <div v-if="isGetResource" ref="iconEl" class="icon" v-html="iconName" />
+  <div ref="iconEl" class="icon"></div>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Ref, Prop, Watch } from 'nuxt-property-decorator'
+import { Vue, Component, Ref, Prop } from 'nuxt-property-decorator'
 
 @Component<Icons>({
   mounted() {
     this.iconType = this.type ? this.type + '/' : ''
     try {
-      this.iconName = require(`~/assets/icons/${this.iconType}${this.name}.svg?raw`)
-      this.isGetResource = true
+      this.iconData = require(`~/assets/icons/${this.iconType}${this.name}.svg?raw`)
     } catch (_e) {
-      this.isGetResource = false
+      this.iconData = require('@/assets/icons/error-404.svg?raw')
+    }
+    this.iconEl.innerHTML = this.iconData
+
+    if (this.color) {
+      const svgEl = this.iconEl.children[0] as HTMLOrSVGImageElement
+      svgEl.style.fill = this.color
     }
   },
 })
 export default class Icons extends Vue {
-  @Ref() iconEl!: HTMLDivElement
-
-  iconType = ''
+  @Ref() iconEl!: HTMLElement
   @Prop({ type: String, required: true }) name!: string
   @Prop({ type: String, required: false }) color!: string
   @Prop({ type: String, required: false }) type!: string
 
-  iconName = ''
-  isGetResource = false
-
-  @Watch('color', { immediate: true, deep: true })
-  handleColor(val: string, _oldVal: string) {
-    if (this.isGetResource && val) {
-      const svgEl = this.iconEl.children[0] as HTMLOrSVGImageElement
-      svgEl.style.fill = this.color
-    }
-  }
+  iconType = ''
+  iconData = ''
 }
-
-// export default defineComponent({
-//   props: {
-//     name: {
-//       type: String,
-//       required: true,
-//     },
-//     color: {
-//       type: String,
-//       required: false,
-//     },
-//   },
-//   setup(props) {
-//     const iconEl = ref<HTMLDivElement>()
-//     const iconName = ref('')
-//     const isGetResource = ref(false)
-
-//     onMounted(() => {
-//       try {
-//         iconName.value = require(`@/assets/icons/${props.name}.svg?raw`)
-//         isGetResource.value = true
-//       } catch (_e) {
-//         isGetResource.value = false
-//       }
-//     })
-
-//     watchEffect(() => {
-//       if (isGetResource.value && iconEl.value && props.color) {
-//         const svgEl = iconEl.value.children[0] as HTMLOrSVGImageElement
-//         svgEl.style.fill = props.color
-//       }
-//     })
-//     return {
-//       iconName,
-//       isGetResource,
-//       iconEl,
-//     }
-//   },
-// })
 </script>
