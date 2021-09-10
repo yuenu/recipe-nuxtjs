@@ -15,7 +15,7 @@
         <MealList
           :meals="getMeals"
           @getMealDetail="onMealDetail"
-          @collectedMeal="collectedMeal"
+          @collectedMeal="onCollectedMeal"
         />
       </div>
       <Contact :categories="getCategories" />
@@ -69,17 +69,16 @@ export default class MealsPage extends Vue {
     return this.storeModule.searchTerm
   }
 
-  collectedMeal(mealId: string) {
-    console.log('add to collection', mealId)
-    this.storeModule.ADD_MEAL_TO_COLLECTED(mealId)
-  }
-
   async setup() {
     await this.storeModule.getAllCategories()
   }
 
+  onCollectedMeal(mealId: string) {
+    this.storeModule.ADD_MEAL_TO_COLLECTED(mealId)
+  }
+
   onCategoryMeals(category: string) {
-    this.storeModule.getFilterByCategory(category)
+    this.storeModule.getMealsByCategory(category)
   }
 
   // Modal Control

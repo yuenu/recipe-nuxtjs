@@ -74,7 +74,11 @@
         </div> -->
           <div class="header__control">
             <Icon :name="'search'" @click.native="searchFormOpen" />
-            <Collection :collection="getCollection" />
+            <Collection
+              :collection="getCollection"
+              @deleteMealFromCollection="deleteMealFromCollection"
+              @getMealDetail="onGetMealDetail"
+            />
           </div>
         </div>
       </div>
@@ -85,6 +89,13 @@
       :search-form-active="searchFormActive"
       @formClose="searchFormClose"
       @searchSubmit="searchSubmit"
+      @getMealDetail="getMealDetail"
+    />
+
+    <Modal
+      v-if="isModalOpen"
+      :meal-data="getMealDetail"
+      @close="onModalClose"
     />
   </header>
 </template>
@@ -94,6 +105,7 @@ import { Vue, Component, Ref, getModule } from 'nuxt-property-decorator'
 import Icon from '@/utils/icons.vue'
 import SearchTern from '@/components/SearchTern.vue'
 import Collection from '@/components/Collection.vue'
+import Modal from '@/components/MealModal.vue'
 
 import App from '@/store/app'
 
@@ -101,7 +113,8 @@ import App from '@/store/app'
   components: {
     Icon,
     SearchTern,
-    Collection
+    Collection,
+    Modal,
   },
   created() {
     this.$store.registerModule('myApp', App)
@@ -121,12 +134,18 @@ import App from '@/store/app'
 export default class Hero extends Vue {
   @Ref() navEl!: HTMLElement
 
+  isModalOpen = false
+
   get storeModule() {
     return getModule(App, this.$store)
   }
 
-  get getCollection () {
+  get getCollection() {
     return this.storeModule.collection
+  }
+
+  get getMealDetail() {
+    return this.storeModule.mealDetail
   }
 
   // Header scroll sticky animation
@@ -154,6 +173,21 @@ export default class Hero extends Vue {
 
   searchSubmit(searchInput: string) {
     this.storeModule.getMealByName(searchInput)
+  }
+
+  deleteMealFromCollection(mealId: string) {
+    this.storeModule.REMOVE_MEAL_FROM_COLLECTION(mealId)
+  }
+
+  onGetMealDetail(mealId: string) {
+    this.storeModule.getMealById(mealId)
+    this.isModalOpen = true
+    document.body.style.overflow = 'hidden'
+  }
+
+  onModalClose() {
+    this.isModalOpen = false
+    document.body.style.overflow = 'auto'
   }
 }
 </script>

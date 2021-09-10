@@ -1,4 +1,4 @@
-import { Module, Action, Mutation, VuexModule } from 'vuex-module-decorators'
+import { Module, Action, Mutation, VuexModule , config } from 'vuex-module-decorators'
 import {
   fetchAllCategories,
   fetchMealsById,
@@ -6,6 +6,9 @@ import {
   fetchMealsByName,
 } from '@/utils/api'
 import { Categories, Meal, CategoryMeals } from '@/types'
+
+// Set rawError to true by default on all @Action decorators
+config.rawError = true
 
 @Module({
   name: 'myApp',
@@ -53,13 +56,17 @@ export default class App extends VuexModule {
       const mealOnCollectionIndex = this.collection.findIndex(
         (meal) => meal.idMeal === mealId
       )
+      const unCollectedMeal = this.meals.filter(
+        (meal) => meal.idMeal === mealId
+      )
+      unCollectedMeal[0].collected = false
       this.collection.splice(mealOnCollectionIndex, 1)
       this.collectionSet.delete(mealId)
     } else {
       this.collectionSet.add(mealId)
       const collectedMeal = this.meals.filter((meal) => meal.idMeal === mealId)
-      this.collection.push({ ...collectedMeal[0], collected: true })
-      console.log(this.collection)
+      collectedMeal[0].collected = true
+      this.collection.push(collectedMeal[0])
     }
   }
 
@@ -70,7 +77,19 @@ export default class App extends VuexModule {
     )
     this.collection.splice(mealOnCollectionIndex, 1)
     this.collectionSet.delete(mealId)
+
+    const unCollectedMeal = this.meals.filter(
+      (meal) => meal.idMeal === mealId
+    )
+    
+    if(unCollectedMeal.length !== 0) {
+      unCollectedMeal[0].collected = false
+    }
   }
+
+  // @Mutation UPDATE_COLLECTION() {
+  //   this.collection
+  // }
 
   @Action
   async getAllCategories() {
@@ -81,13 +100,19 @@ export default class App extends VuexModule {
   }
 
   @Action
-  async getFilterByCategory(category: string) {
+  async getMealsByCategory(category: string) {
     const { meals } = await fetchMealsByCategory(category)
     this.STORE_SEARCHTERM(category)
-    const handleMealsData = []
+    const handleMealsData: CategoryMeals[] = []
     for (const meal of meals) {
-      handleMealsData.push({ ...meal, collected: false })
+      handleMealsData.push(Object.assign({}, meal, { collected: false }))
     }
+    // Update the meal card's colelcted ui
+    handleMealsData.forEach(meal => {
+      if(this.collectionSet.has(meal.idMeal)) {
+        meal.collected = true
+      }
+    })
     this.STORE_MEALS(handleMealsData)
   }
 

@@ -74,11 +74,11 @@ export default class IndexPage extends Vue {
   async setup() {
     await this.storeModule.getAllCategories()
     if (this.getMeals.length === 0)
-      await this.storeModule.getFilterByCategory('beef')
+      await this.storeModule.getMealsByCategory('beef')
   }
 
   onCategoryMeals(category: string) {
-    this.storeModule.getFilterByCategory(category)
+    this.storeModule.getMealsByCategory(category)
   }
 
   onGetMealDetail(mealId: string) {

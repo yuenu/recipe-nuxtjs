@@ -1,12 +1,17 @@
 <template>
   <section class="collection">
-    <Icon
-      :class="['collection__icon', { active: isActive }]"
-      :name="'heart'"
-      @click.native="collectionStatusControl"
-    />
+    <div class="collection__main" @click="collectionStatusControl">
+      <Icon
+        :class="['collection__icon', { active: isActive }]"
+        :name="'heart'"
+      />
+      <div class="collection__count">{{ getCollection.length }}</div>
+    </div>
     <div :class="['collection__container', { active: isActive }]">
-      <div class="collection__heading">{{ $t('header.collection') }}</div>
+      <div class="collection__heading">
+        {{ $t('header.collection') }}
+        <span>({{ getCollection.length }})</span>
+      </div>
       <div class="collection__content">
         <div
           v-for="collection in getCollection"
@@ -22,7 +27,7 @@
             class="collection__box-delete"
             :name="'delete'"
             :color="'red'"
-            @click.native.stop="deleteMealFromCollection"
+            @click.native.stop="deleteMealFromCollection(collection.idMeal)"
           />
         </div>
       </div>
@@ -54,11 +59,11 @@ export default class Collection extends Vue {
   }
 
   getMealDetail(mealId: string) {
-    console.log('get meal detail', mealId)
+    this.$emit('getMealDetail', mealId)
   }
 
-  deleteMealFromCollection() {
-    console.log('delete')
+  deleteMealFromCollection(mealId: string) {
+    this.$emit('deleteMealFromCollection', mealId)
   }
 }
 </script>

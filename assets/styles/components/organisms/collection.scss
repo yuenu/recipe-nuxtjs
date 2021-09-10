@@ -1,11 +1,31 @@
 .collection {
   position: relative;
+
+  &__main {
+    cursor: pointer;
+  }
+
   &__icon svg {
     stroke: #ed2c49;
   }
 
   &__icon.active svg {
     fill: #ed2c49;
+  }
+
+  &__count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: $color-secondary;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    border-radius: 50%;
+    user-select: none;
   }
 
   &__container {
@@ -84,6 +104,10 @@
 
     &-delete {
       margin-right: 10px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      
       svg {
         width: 20px;
         height: 20px;
