@@ -30,9 +30,10 @@ import Characteristics from '@/components/Home/Characteristics.vue'
 import Feature from '@/components/Home/Feature.vue'
 import ProductDisplay from '@/components/Home/ProductDisplay.vue'
 import Contact from '@/components/Contact.vue'
+
+import Modal from '@/components/MealModal.vue'
 import customIcons from '@/utils/iconStore'
 import App from '@/store/app'
-import Modal from '@/components/MealModal.vue'
 
 @Component<IndexPage>({
   components: {

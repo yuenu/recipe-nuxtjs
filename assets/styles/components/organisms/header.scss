@@ -2,6 +2,7 @@
 .header {
   width: 100%;
   min-height: 100px;
+  z-index: 10;
 
   @include respond(phone) {
     &__lang,

@@ -27,22 +27,20 @@
       <div ref="navEl" class="header__wrapper">
         <div class="header__bottom">
           <div class="header__lang">
-            <nuxt-link class="header__lang-cn" :to="switchLocalePath('cn')">
+            <NuxtLink class="header__lang-cn" :to="switchLocalePath('cn')">
               簡
-            </nuxt-link>
-            <nuxt-link class="header__lang-tw" :to="switchLocalePath('tw')">
+            </NuxtLink>
+            <NuxtLink class="header__lang-tw" :to="switchLocalePath('tw')">
               繁
-            </nuxt-link>
-            <nuxt-link class="header__lang-en" :to="switchLocalePath('en')">
+            </NuxtLink>
+            <NuxtLink class="header__lang-en" :to="switchLocalePath('en')">
               EN
-            </nuxt-link>
+            </NuxtLink>
           </div>
           <nav class="header__nav">
             <ul class="header__nav-list">
               <li>
-                <NuxtLink :to="localePath('/')">{{
-                  $t('navigation.home')
-                }}</NuxtLink>
+                <HomeMenu @getMealByCategory="getMealByCategory" />
               </li>
               <li>
                 <NuxtLink :to="localePath('/#about')">{{
@@ -107,6 +105,8 @@ import SearchTern from '@/components/SearchTern.vue'
 import Collection from '@/components/Collection.vue'
 import Modal from '@/components/MealModal.vue'
 
+import HomeMenu from '@/components/HomeMenu.vue'
+
 import App from '@/store/app'
 
 @Component<Hero>({
@@ -115,6 +115,7 @@ import App from '@/store/app'
     SearchTern,
     Collection,
     Modal,
+    HomeMenu,
   },
   created() {
     this.$store.registerModule('myApp', App)
@@ -188,6 +189,11 @@ export default class Hero extends Vue {
   onModalClose() {
     this.isModalOpen = false
     document.body.style.overflow = 'auto'
+  }
+
+  getMealByCategory(category: string) {
+    this.storeModule.getMealsByCategory(category)
+    this.$router.push(this.localePath({ path: 'meals' }))
   }
 }
 </script>
