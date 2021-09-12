@@ -3,7 +3,7 @@ import i18nConfig from './utils/i18nConfig'
 
 const config: NuxtConfig = {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: 'server',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -23,6 +23,10 @@ const config: NuxtConfig = {
       {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap',
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap',
       },
     ],
   },
@@ -61,8 +65,8 @@ const config: NuxtConfig = {
   build: {},
 
   privateRuntimeConfig: {
-    apiSecret: process.env.GOOGLEMAAP_API_KEY
-  }
+    apiSecret: process.env.GOOGLEMAAP_API_KEY,
+  },
 }
 
 export default config
