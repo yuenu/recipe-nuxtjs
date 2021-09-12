@@ -9,8 +9,9 @@
 import { Vue, Component, Ref } from 'nuxt-property-decorator'
 import { Loader } from '@googlemaps/js-api-loader'
 
+
 const TaichungCityGovernment = { lat: 24.161796, lng: 120.646765 }
-const googleMapsApiKey = 'AIzaSyCs74COIjvF20Nf-Su3NIFlmCSQ0iAy_g4'
+const googleMapsApiKey = process.env.GOOGLEMAAP_API_KEY || ''
 const loader = new Loader({ apiKey: googleMapsApiKey, language: 'zh_TW' })
 
 @Component<Map>({
