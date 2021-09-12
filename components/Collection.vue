@@ -5,12 +5,16 @@
         :class="['collection__icon', { active: isActive }]"
         :name="'heart'"
       />
-      <div class="collection__count">{{ getCollection.length }}</div>
+      <div v-if="getCollection.length !== 0" class="collection__count">
+        {{ getCollection.length }}
+      </div>
     </div>
     <div :class="['collection__container', { active: isActive }]">
       <div class="collection__heading">
         {{ $t('header.collection') }}
-        <span>({{ getCollection.length }})</span>
+        <span v-if="getCollection.length !== 0"
+          >({{ getCollection.length }})</span
+        >
       </div>
       <div class="collection__content">
         <div
