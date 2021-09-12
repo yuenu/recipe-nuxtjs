@@ -100,7 +100,6 @@ export default class HomeMenu extends Vue {
   }
 
   onBackToHome() {
-    console.log('back to home')
     this.isActive = false
   }
 }
