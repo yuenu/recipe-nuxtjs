@@ -1,15 +1,14 @@
 <template>
-  <section class="menu">
-    <div
+  <section class="menu" @click="onBackToHome">
+    <NuxtLink
       class="menu__link"
       :to="localePath('/')"
-      @click="onBackToHome"
       @mouseover.native="onMouseEnter"
       @mouseleave.native="onMouseLeave"
     >
       {{ $t('navigation.home') }}
       <Icon :name="'down-arrow'" />
-    </div>
+    </NuxtLink>
     <div
       v-show="isActive"
       class="menu__container"
@@ -95,12 +94,11 @@ export default class HomeMenu extends Vue {
   }
 
   onGetMealByCategory(category: string) {
-    this.isActive = false
     this.$emit('getMealByCategory', category)
   }
 
   onBackToHome() {
-    this.isActive = false
+    this.isActive = !this.isActive
   }
 }
 </script>
