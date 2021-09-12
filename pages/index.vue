@@ -17,6 +17,7 @@
         @getMealDetail="onGetMealDetail"
       />
       <Contact :categories="getCategories" />
+      <Map />
     </div>
   </main>
 </template>
@@ -30,6 +31,7 @@ import Characteristics from '@/components/Home/Characteristics.vue'
 import Feature from '@/components/Home/Feature.vue'
 import ProductDisplay from '@/components/Home/ProductDisplay.vue'
 import Contact from '@/components/Contact.vue'
+import Map from '@/components/Map.vue'
 
 import Modal from '@/components/MealModal.vue'
 import customIcons from '@/utils/iconStore'
@@ -44,6 +46,7 @@ import App from '@/store/app'
     ProductDisplay,
     Contact,
     Modal,
+    Map
   },
   mounted() {
     this.setup()

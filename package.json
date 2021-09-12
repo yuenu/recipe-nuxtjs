@@ -16,6 +16,7 @@
     "*.{ts,vue}": "eslint"
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.12.2",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/i18n": "^7.0.3",
     "core-js": "^3.15.1",
@@ -31,6 +32,7 @@
     "@nuxtjs/eslint-config-typescript": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/svg": "^0.2.0",
+    "@types/google.maps": "^3.45.6",
     "@types/swiper": "^5.4.3",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
