@@ -44,6 +44,7 @@ const config: NuxtConfig = {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     '@nuxtjs/svg',
+    '@nuxtjs/dotenv',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -58,6 +59,10 @@ const config: NuxtConfig = {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  privateRuntimeConfig: {
+    apiSecret: process.env.GOOGLEMAAP_API_KEY
+  }
 }
 
 export default config
