@@ -18,7 +18,8 @@
           @collectedMeal="onCollectedMeal"
         />
       </div>
-      <Contact :categories="getCategories" />
+      <Contact :categories="getCategories" @getMealsByCategory="onCategoryMeals" />
+      <Map />
     </div>
   </main>
 </template>
@@ -30,6 +31,7 @@ import MealSidebar from '@/components/Meals/MealSidebar.vue'
 import MealList from '@/components/Meals/MealsList.vue'
 import Contact from '@/components/Contact.vue'
 import Modal from '@/components/MealModal.vue'
+import Map from '@/components/Map.vue'
 
 import App from '@/store/app'
 
@@ -40,6 +42,7 @@ import App from '@/store/app'
     MealList,
     Contact,
     Modal,
+    Map
   },
   mounted() {
     this.setup()

@@ -58,12 +58,16 @@
       </div>
     </div>
     <div class="contact__card">
-      <h2 class="contact__title">{{ $t('contact.heading3') }}</h2>
+      <h2 class="contact__title">
+        {{ $t('contact.heading3') }}
+        <span class="contact__more" @click="moreMeals">more</span>
+      </h2>
       <div class="contact__content">
         <div
-          v-for="category in getCategories"
+          v-for="category in getCategories.slice(0, 6)"
           :key="category.id"
           class="contact__ingredient"
+          @click="onGetCategoryMeal(category.strCategory)"
         >
           <img :src="category.strCategoryThumb" :alt="category.strCategory" />
         </div>
@@ -87,6 +91,17 @@ export default class Contact extends Vue {
 
   get getCategories() {
     return this.categories
+  }
+  
+  onGetCategoryMeal(category: string) {
+    this.$emit('getMealsByCategory', category)
+    this.$router.push(this.localePath({ path: 'meals' }))
+    window.scrollTo(0, 0)
+  }
+
+  moreMeals() {
+    this.$router.push(this.localePath({ path: 'meals' }))
+    window.scrollTo(0, 0)
   }
 }
 </script>

@@ -16,7 +16,7 @@
         @getCategoryMeal="onCategoryMeals"
         @getMealDetail="onGetMealDetail"
       />
-      <Contact :categories="getCategories" />
+      <Contact :categories="getCategories" @getMealsByCategory="onCategoryMeals" />
       <Map />
     </div>
   </main>
