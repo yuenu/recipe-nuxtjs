@@ -1,6 +1,6 @@
 <template>
   <section class="map">
-    <h1 class="map__heading">地圖資訊</h1>
+    <h1 class="map__heading">{{ $t('mapInfo') }}</h1>
     <div ref="mapEl" class="mapEl" style="height: 60vh; width: 100%"></div>
   </section>
 </template>
@@ -8,7 +8,6 @@
 <script lang="ts">
 import { Vue, Component, Ref } from 'nuxt-property-decorator'
 import { Loader } from '@googlemaps/js-api-loader'
-
 
 const TaichungCityGovernment = { lat: 24.161796, lng: 120.646765 }
 const googleMapsApiKey = process.env.GOOGLEMAAP_API_KEY || ''

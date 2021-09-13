@@ -2,7 +2,7 @@ export default {
   'navigation': {
     'home' : '首页',
     'meals': '食谱',
-    'about': '关於我',
+    'about': '关於我们',
     'contact': '联络我们',
     'settings': '个人设置',
     'projects': '其他作品'
@@ -76,5 +76,9 @@ export default {
     'ingredients': '食材'
   },
   'recipe': '食谱',
-  'error-message': '只允許英文字母'
+  'error-message': '只允許英文字母',
+  'mapInfo': '地图资讯',
+  'recipes': '食谱列表',
+  'discover': '发现更多食谱',
+  'search': '搜寻(限英文)'
 }

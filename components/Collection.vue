@@ -16,7 +16,10 @@
           >({{ getCollection.length }})</span
         >
       </div>
-      <div class="collection__content">
+      <div v-if="getCollection.length === 0" class="collection__emptyMessage">
+        <span @click="onDiscover">{{ $t('discover') }}</span>
+      </div>
+      <div v-if="getCollection.length > 0" class="collection__content">
         <div
           v-for="collection in getCollection"
           :key="collection.idMeal"
@@ -68,6 +71,12 @@ export default class Collection extends Vue {
 
   deleteMealFromCollection(mealId: string) {
     this.$emit('deleteMealFromCollection', mealId)
+  }
+
+  onDiscover() {
+    this.isActive = false
+    this.$router.push(this.localePath({ path: 'meals' }))
+    window.scrollTo(0, 0)
   }
 }
 </script>

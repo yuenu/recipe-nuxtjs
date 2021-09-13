@@ -106,6 +106,7 @@ export default class HomeMenu extends Vue {
   onBackToHome() {
     this.isActive = !this.isActive
     this.$router.push(this.localePath({ path: '/' }))
+    window.scrollTo(0,0)
   }
 }
 </script>

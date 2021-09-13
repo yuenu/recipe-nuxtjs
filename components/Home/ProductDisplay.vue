@@ -1,6 +1,6 @@
 <template>
   <section id="product" class="product">
-    <h1 class="product__heading">Product display</h1>
+    <h1 class="product__heading">{{ $t('recipes') }}</h1>
     <div ref="swiperComponentRef" class="product__categories">
       <div
         v-for="category in getCategories"

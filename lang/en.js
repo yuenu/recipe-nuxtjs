@@ -76,5 +76,9 @@ export default {
     'ingredients': 'INGREDIENTS'
   },
   'recipe': 'Recipe',
-  'error-message': 'Only accept english letter'
+  'error-message': 'Only accept english letter',
+  'mapInfo': 'Map Information',
+  'recipes': 'Recipes',
+  'discover': 'Discover recipe',
+  'search': 'Search'
 }

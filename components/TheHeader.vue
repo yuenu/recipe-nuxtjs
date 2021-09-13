@@ -40,7 +40,10 @@
           <nav class="header__nav">
             <ul class="header__nav-list">
               <li>
-                <HomeMenu @getMealByCategory="getMealByCategory" />
+                <HomeMenu
+                  @getMealByCategory="getMealByCategory"
+                  @getMealsByName="getMealsByName"
+                />
               </li>
               <li>
                 <NuxtLink :to="localePath('/#about')">{{
@@ -193,6 +196,11 @@ export default class Hero extends Vue {
 
   getMealByCategory(category: string) {
     this.storeModule.getMealsByCategory(category)
+    this.$router.push(this.localePath({ path: 'meals' }))
+  }
+
+  getMealsByName(name: string) {
+    this.storeModule.getMealByName(name)
     this.$router.push(this.localePath({ path: 'meals' }))
   }
 }
