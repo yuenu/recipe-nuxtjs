@@ -7,7 +7,7 @@
             v-model.trim="searchInput"
             :class="['search__tern', { square: isFormActive }]"
             type="text"
-            placeholder="search"
+            :placeholder="$t('search')"
             autocapitalize="off"
           />
           <button
@@ -25,14 +25,14 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'nuxt-property-decorator'
 
-@Component<SearchTern>({
+@Component<SearchTerm>({
   mounted() {
     setTimeout(() => {
       this.formActive = true
     }, 200)
   },
 })
-export default class SearchTern extends Vue {
+export default class SearchTerm extends Vue {
   @Prop({ default: false, type: Boolean }) searchFormActive!: boolean
 
   // TODO: Router query should be work
