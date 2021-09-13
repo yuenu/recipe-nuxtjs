@@ -11,7 +11,6 @@
   color: #fff;
 }
 
-
 // Scrollbar
 * {
   scrollbar-width: auto;
@@ -26,7 +25,6 @@
 
     &-thumb {
       background: $clr-gray-400;
-
     }
   }
 }
@@ -35,12 +33,12 @@
   outline: none;
 }
 
-
 html,
 body {
-  font-family: 'Oswald', 'Noto Sans TC', sans-serif;
-  font-weight:unset;
+  font-family: 'Oswald', 'Microsoft Yahei', sans-serif;
+  font-weight: unset;
   scroll-behavior: smooth;
+  font-weight: 500;
 }
 
 #app {
@@ -57,18 +55,18 @@ a {
 ul,
 li {
   list-style: none;
-  padding:0;
+  padding: 0;
 }
 
 img {
-  max-width:100%;
-  height:auto;
-  vertical-align:middle;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
 }
 
 .icon svg {
-  width:24px;
-  height:24px;
+  width: 24px;
+  height: 24px;
 }
 
 .page-enter-active,
