@@ -1,14 +1,14 @@
 <template>
-  <section class="menu" @click="onBackToHome">
-    <NuxtLink
+  <section class="menu">
+    <a
       class="menu__link"
-      :to="localePath('/')"
-      @mouseover.native="onMouseEnter"
-      @mouseleave.native="onMouseLeave"
+      @click="onBackToHome"
+      @mouseover="onMouseEnter"
+      @mouseleave="onMouseLeave"
     >
       {{ $t('navigation.home') }}
       <Icon :name="'down-arrow'" />
-    </NuxtLink>
+    </a>
     <div
       v-show="isActive"
       class="menu__container"
@@ -19,7 +19,7 @@
         <img
           src="@/assets/images/menu/steak.png"
           alt="steak"
-          @click="onGetMealByCategory('steak')"
+          @click="onGetMealsByName('steak')"
         />
         <img
           src="@/assets/images/menu/dessert.png"
@@ -29,7 +29,7 @@
         <img
           src="@/assets/images/menu/pizza.png"
           alt="pizza"
-          @click="onGetMealByCategory('pizza')"
+          @click="onGetMealsByName('pizza')"
         />
 
         <img
@@ -94,11 +94,18 @@ export default class HomeMenu extends Vue {
   }
 
   onGetMealByCategory(category: string) {
+    this.isActive = !this.isActive
     this.$emit('getMealByCategory', category)
+  }
+
+  onGetMealsByName(name: string) {
+    this.isActive = !this.isActive
+    this.$emit('getMealsByName', name)
   }
 
   onBackToHome() {
     this.isActive = !this.isActive
+    this.$router.push(this.localePath({ path: '/' }))
   }
 }
 </script>
