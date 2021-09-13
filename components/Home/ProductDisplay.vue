@@ -32,7 +32,7 @@
             v-skeleton="{ src: meal.strMealThumb, alt: meal.strMeal }"
             :width="'100%'"
             :height="'100%'"
-            :min-height="'30vh'"
+            :min-height="'28vh'"
           />
         </div>
         <div class="product__card-content">

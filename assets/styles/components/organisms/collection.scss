@@ -72,6 +72,24 @@
     background-color: $color-secondary;
   }
 
+  &__emptyMessage {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+
+    span {
+      color:#5491f5;
+      transition:200ms;
+      position:relative;
+      cursor: pointer;
+
+      &:hover {
+        color:red;
+      }
+    }
+  }
+
   &__content {
     height: 100%;
     overflow-y: auto;

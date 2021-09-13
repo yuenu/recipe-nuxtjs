@@ -1,9 +1,11 @@
 .menu {
   position: relative;
+  
   &__link {
     display: flex;
     align-items: center;
     gap: 6px;
+    cursor: pointer;
 
     svg {
       width: 10px;

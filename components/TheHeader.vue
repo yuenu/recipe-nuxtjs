@@ -82,7 +82,7 @@
       </div>
     </div>
 
-    <SearchTern
+    <SearchTerm
       v-if="searchFormActive"
       :search-form-active="searchFormActive"
       @formClose="searchFormClose"
@@ -101,7 +101,7 @@
 <script lang="ts">
 import { Vue, Component, Ref, getModule } from 'nuxt-property-decorator'
 import Icon from '@/utils/icons.vue'
-import SearchTern from '@/components/SearchTern.vue'
+import SearchTerm from '@/components/SearchTerm.vue'
 import Collection from '@/components/Collection.vue'
 import Modal from '@/components/MealModal.vue'
 
@@ -112,7 +112,7 @@ import App from '@/store/app'
 @Component<Hero>({
   components: {
     Icon,
-    SearchTern,
+    SearchTerm,
     Collection,
     Modal,
     HomeMenu,

@@ -6,7 +6,7 @@
           v-skeleton="{ src: meal.strMealThumb, alt: meal.strMeal }"
           :height="'100%'"
           :width="'100%'"
-          :min-height="'30vh'"
+          :min-height="'28vh'"
         />
       </div>
       <div class="meal__card-content">
